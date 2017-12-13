@@ -1,0 +1,78 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="2768779713" file="C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format\final functions\curation_4.prj" location="C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format\final functions" name="curation_4" target="target.mlapps" target-name="Package App">
+    <param.appname>curation_4</param.appname>
+    <param.authnamewatermark>Brenda Farrell</param.authnamewatermark>
+    <param.email>bfarrell@bcm.edu</param.email>
+    <param.company>BCM</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>Curation of electrophysiology data</param.summary>
+    <param.description>MATLAB scripts to translate 4 array of structs files to 89 specimen files in HDF5</param.description>
+    <param.screenshot />
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format\final functions</param.output>
+    <param.guid>7fece921-2820-4b0a-b08b-329f04f8420f</param.guid>
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.screenshot />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\curation_4.m</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\arm_anatomicalv5.m</file>
+      <file>${PROJECT_ROOT}\arm_assayv10.m</file>
+      <file>${PROJECT_ROOT}\arm_cellv5.m</file>
+      <file>${PROJECT_ROOT}\arm_devicev5.m</file>
+      <file>${PROJECT_ROOT}\arm_organismv5.m</file>
+      <file>${PROJECT_ROOT}\attribute_general.m</file>
+      <file>${PROJECT_ROOT}\create_and_write_double_dataset.m</file>
+      <file>${PROJECT_ROOT}\create_and_write_int_dataset.m</file>
+      <file>${PROJECT_ROOT}\create_and_write_string_dataset.m</file>
+      <file>${PROJECT_ROOT}\create_write_array_of_dble_dset.m</file>
+      <file>${PROJECT_ROOT}\specific_string_attribute.m</file>
+      <file>${PROJECT_ROOT}\write_attribute_for_group.m</file>
+    </fileset.depfun>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\ReadMe_translation_from_MATLAB_to_HDF5.docx</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format" name="final functions" optional="false">C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format\final functions</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2017b</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
