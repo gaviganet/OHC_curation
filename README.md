@@ -41,4 +41,9 @@ To run these scripts you will need to change the paths where the original MATLAB
 
 This script also plots the difference between that reported in the data-set, and that calculated now by the interested user in MATLAB. 
 
+3.2 To check whether you calculate the same non-linear and linear electrical parameters (e.g., voltage at peak capacitance, linear capacitance) as that reported. You will need to translate data from HDF5 to MATLAB (see item 2 above) and require
+
+     (3.2A) check_non_linear_electrical_properties
+
+
 
