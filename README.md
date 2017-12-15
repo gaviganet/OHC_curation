@@ -23,7 +23,7 @@ To examine the data in MATLAB use BACKFLOW_script.m to create a Table and give i
             specific_string_attribute.m
             write_attribute_for_group.m
             attribute_general.m
-To run these scripts you will need to change the paths where the original MATLAB data is stored, the paths where the M files are stored and the path where the specimen files will be stored. More information about the script and fucntions can be found in the pdf file: ReadMe_translation_from_MATLAB_to_HDF5.
+To run these scripts you will need to change the paths where the original MATLAB data is stored, the paths where the M files are stored and the path where the specimen files will be stored. More information about the script and functions can be found in the pdf file: ReadMe_translation_from_MATLAB_to_HDF5.
 
 (2)  MATLAB scripts that facilitate the translation of the data-set back to MATLAB from HDF5
 
@@ -34,12 +34,13 @@ To run these scripts you will need to change the paths where the original MATLAB
 (3) MATLAB scripts used to check the integrity of the data-set
 
 3.1 To check whether you calculate the same calculated electrical parameters (membrane resistance, membrane capacitance and series resistance) of an outer hair cell from the admittance measurements (reported by the researcher).
-(3.1A) You will need to translate data from HDF5 to MATLAB (see item 2 above). 
-(3.1B) Run check_cell_parameters.m which plots the difference between that reported in the data-set, and that calculated now by the interested user. 
-(3.1B) This main script (check_cell_parameters.m) calls the functions calculate_b_Rm_Rs_Cm.m and parameter_sameassaved.m
 
+(3.1A) You will need to translate data from HDF5 to MATLAB (see item 2 above) and run
 
-The first The main M file is check cell
-To run these scripts you will need to extract the specimen files from the repository which can be found here change the paths where the the M files are stored and the path where the specimen files are stored. More information can be found in the pdf file: ReadMe_translation_from_HDF5_to_MATLAB.      
+(3.1B) The main M script file is check_cell_parameters.m 
+
+(3.1C) This script calls the functions calculate_b_Rm_Rs_Cm.m and parameter_sameassaved.m
+
+This script also plots the difference between that reported in the data-set, and that calculated now by the interested user. 
 
 
