@@ -33,7 +33,7 @@ To run these scripts you will need to change the paths where the original MATLAB
       
 (3) MATLAB scripts used to check the integrity of the data-set
 
-3.1 To check whether you calculate the same calculated electrical parameters (membrane resistance, membrane capacitance and series resistance) of an outer hair cell from the admittance measurements (reported by the researcher).
+3.1 To check whether you calculate the same electrical parameters (membrane resistance, membrane capacitance and series resistance) from the admittance measurements as that reported (by the researcher).
 
 (3.1A) You will need to translate data from HDF5 to MATLAB (see item 2 above) and run
 
@@ -41,6 +41,6 @@ To run these scripts you will need to change the paths where the original MATLAB
 
 (3.1C) This script calls the functions calculate_b_Rm_Rs_Cm.m and parameter_sameassaved.m
 
-This script also plots the difference between that reported in the data-set, and that calculated now by the interested user. 
+This script also plots the difference between that reported in the data-set, and that calculated now by the interested user in MATLAB. 
 
 
