@@ -29,7 +29,7 @@ To run these scripts you will need to change the paths where the original MATLAB
 
       (2A) The main M script file is HDF52MAT_script.m.  
       
-      (2B) This script calls the function HDF52MAT_v2.m
+      (2B) This script calls the function HDF52MAT_v2.m.
       
 (3) MATLAB scripts used to check the integrity of the data-set
 
@@ -37,13 +37,13 @@ To run these scripts you will need to change the paths where the original MATLAB
 
       (3.1A) The main M script file is check_cell_parameters.m 
 
-      (3.1C) This script calls the functions calculate_b_Rm_Rs_Cm.m and parameter_sameassaved.m
+      (3.1B) This script calls the functions calculate_b_Rm_Rs_Cm.m and parameter_sameassaved.m.
 
 This script also plots the difference between that reported in the data-set, and that calculated now by the interested user in MATLAB. 
 
 3.2 To check whether you calculate the same non-linear and linear electrical parameters (e.g., voltage at peak capacitance, linear capacitance) as that reported. You will need to translate data from HDF5 to MATLAB (see item 2 above) and require
 
-     (3.2A) check_non_linear_electrical_properties
+     (3.2A) check_non_linear_electrical_properties.
 
 
 
