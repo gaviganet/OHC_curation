@@ -160,12 +160,12 @@ TF2=isvarname(name_d);
 hdf52mat_out=translate_HDF5double_or_int_2_MLB(namenew,name_g,name_d,space_d,TF,TF3,TF2,hdf52mat_out,class_d);
 end
 % physical and temporal
-name_g=INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(5).Name;
-numb=length(INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(5).Datasets);
+name_g=INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(4).Name;
+numb=length(INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(4).Datasets);
 for k=1:1:numb
-name_d=INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(5).Datasets(k).Name;      
-class_d=INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(5).Datasets(k).Datatype.Class;
-space_d=INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(5).Datasets(k).Dataspace.Size;
+name_d=INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(4).Datasets(k).Name;      
+class_d=INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(4).Datasets(k).Datatype.Class;
+space_d=INFO.Groups(2).Groups(1).Groups(1).Groups(2).Groups(4).Datasets(k).Dataspace.Size;
 TF= isempty(h5read(namenew,strcat(name_g,'/',name_d)));
 TF3=isempty(space_d);
 TF2=isvarname(name_d);
