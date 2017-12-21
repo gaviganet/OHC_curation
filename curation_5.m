@@ -6,14 +6,14 @@ function curation_5()
 % used to create data; the third arm (arm_anatomicalv6.m) is the anatomy of
 % the organism where the cells where isolated; the fourth (arm_cellv6.m) is
 % the description of the cell that was used to make the electrical
-% recording and the last (arm_assayv10.m) is the details of the assay that
+% recording and the last (arm_assayv11.m) is the details of the assay that
 % were conducted. 
 
 % arm_organismv6(dirname,filename_fits,k_adult_male,count); 
 % arm_devicev6(dirname,filename_fits,k_adult_male,count);
 % arm_anatomicalv6(dirname,filename_fits,k_adult_male,count); 
 % arm_cellv6(dirname, filename_fits,k_adult_male,count); 
-% arm_assayv10(dirname,filename_fits,k_adult_male,count) 
+% arm_assayv11(dirname,filename_fits,k_adult_male,count) 
 
 % dirname: is the path where the MATLAB
 % data is to be translated; filename_fits is the name of the MATLAB data
@@ -76,7 +76,7 @@ function curation_5()
 % “definition’, “units’ or ‘note’ and the “dadefinition” is the actual
 % description of the definition units or note. They are attached to dataset
 % with id: DATASETID.
-% Updated December 15 2017
+% Updated December 21 2017
 % Copyright Brenda Farrell and Jason Bengtson
 % warning('off'); % have this because prints of warnings slows code
 
@@ -110,7 +110,7 @@ arm_organismv6(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegda
 arm_devicev6(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 arm_anatomicalv6(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_cellv6(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
-arm_assayv10(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
+arm_assayv11(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 %
 % Get second file
 clear;
@@ -139,7 +139,7 @@ arm_organismv6(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegd
 arm_devicev6(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_anatomicalv6(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_cellv6(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
-arm_assayv10(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
+arm_assayv11(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 %
 clear;
 pathbegdata='Y:\OHC_Data\Data for portal\female prepubertal';
@@ -166,7 +166,7 @@ arm_organismv6(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbe
 arm_devicev6(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_anatomicalv6(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_cellv6(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
-arm_assayv10(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
+arm_assayv11(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 %
 clear;
 pathbegdata='Y:\OHC_Data\Data for portal\female adult mid-estrous';
@@ -194,5 +194,5 @@ arm_organismv6(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbeg
 arm_devicev6(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_anatomicalv6(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_cellv6(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
-arm_assayv10(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
+arm_assayv11(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
 %%
