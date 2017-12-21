@@ -43,24 +43,6 @@ dadefinition= char(didefinition);
 ATTRIBUTE      ='genbank common name';
 write_attribute_for_group(group_id_2a,dadefinition,ATTRIBUTE)
 %
-% Add vendor dataset within second group
-phenotype=array_of_do_fits(1,j).phenotype;
-if(strcmp(phenotype,'tricolor'))
-   vendor='bred at Baylor College of Medicine with initial and supplemented stock from Elm Hill Labs';
-else
-   vendor ='Charles River Laboratories';
-end   
-type = H5T.copy ('H5T_C_S1');
-space=H5S.create('H5S_SCALAR');
-name_def='vendor';
-DATASETID=create_and_write_string_dataset(group_id_2a,space,type,name_def,vendor);
-%add atributes
-attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-
-didefinition= 'company where animals were bred and/or purchased'; 
-dadefinition= char(didefinition);
-ATTRIBUTE='definition';
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Add third group
 group_id_3a = H5G.create(fileID, '/organism/Cavia porcellus/organism information', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
@@ -68,7 +50,6 @@ didefinition= 'the properties of a discrete organism';
 dadefinition= char(didefinition);
 ATTRIBUTE='definition';
 write_attribute_for_group(group_id_3a,dadefinition,ATTRIBUTE);
-
 % Create data sets within group three
 % Weight
 weight=array_of_do_fits(1,j).weight;
@@ -176,12 +157,28 @@ DATASETID=create_and_write_string_dataset(group_id_3a,space,type,name_def,sex);
 
 %create attributes
 attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-
 didefinition= 'gender of the subject'; 
 dadefinition= char(didefinition);
 ATTRIBUTE='definition';
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 
+% Add vendor dataset
+phenotype=array_of_do_fits(1,j).phenotype;
+if(strcmp(phenotype,'tricolor'))
+   vendor='bred at Baylor College of Medicine with initial and supplemented stock from Elm Hill Labs';
+else
+   vendor ='Charles River Laboratories';
+end   
+type = H5T.copy ('H5T_C_S1');
+space=H5S.create('H5S_SCALAR');
+name_def='vendor';
+DATASETID=create_and_write_string_dataset(group_id_3a,space,type,name_def,vendor);
+%add atributes
+attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
+didefinition= 'company where animals were bred and/or purchased'; 
+dadefinition= char(didefinition);
+ATTRIBUTE='definition';
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 H5F.close(fileID)
 clearvars -except dirname filename_fits count k_adult_male array_of_do_fits pathfunctions pathbegdata pathsavedata;
 
