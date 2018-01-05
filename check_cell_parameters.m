@@ -39,7 +39,7 @@ clear % clear memory
 pathsavedata=('Y:\OHC_Data\Data for portal\Specimen');
 genpath('pathsavedata');
 cd(pathsavedata);
-load(strcat('array_of_hdf52mat_out','.mat'));
+load(strcat('array_of_hdf52mat_out','.mat'));  %file with data
 
 pathfunctions=('C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format\final functions\Package');
 cd(pathfunctions)
