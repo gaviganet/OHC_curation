@@ -43,6 +43,7 @@ load(strcat('array_of_hdf52mat_out','.mat'));
 
 pathfunctions=('C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format\final functions\Package');
 cd(pathfunctions)
+
 % Transfer the data into floats from structure to calculate parameters 
 k=1; % This is number of the structure within array of structs you are looking at change this to look at other data
 % values measured during an experiment
@@ -58,6 +59,7 @@ cellnumber=array_of_hdf52mat_out(1,k).originalCellNumber;
 phenotype=array_of_hdf52mat_out(1,k).phenotype;
 sex=array_of_hdf52mat_out(1,k).sex;
 researcher=array_of_hdf52mat_out(1,k).researcher;
+
 % values calculated and saved from the original measurements
 Cm_low_saved=array_of_hdf52mat_out(1,k).Cmlf;
 Cm_high_saved=array_of_hdf52mat_out(1,k).Cmhf;
@@ -66,6 +68,7 @@ Rm_saved=array_of_hdf52mat_out(1,k).Rm;
 b_saved(1:1:length(Imlf),1)=(Rs_saved(1:1:length(Imlf),1)*1E6+Rm_saved(1:1:length(Imlf),1)*1E6).^(-1);
 n=length(Imlf);
 i=1;
+
 % This part ensuring there are no zero values or NaN within array
 while(i<n)
     if(Imlf(i,1)~=0||isnan(Imlf(i,1)~=1))
@@ -77,11 +80,12 @@ while(i<n)
  n=n-1;   
  
 for i=1:1:n
-Cm_measured_lowb(i,1)=(Relf(i,1).*Relf(i,1))/(2*pi*f_low*Imlf(i,1))*1E12;% this is capacitance low frequency approximation in pF
-Cm_measured_highb(i,1)=(Rehf(i,1).*Rehf(i,1))/(2*pi*f_high*Imhf(i,1))*1E12; % this is capacitance high frequency approximation in pF
-Cm_measured_low=Imlf(i,1)/(2*pi*f_low)*1E12; % this is the measured capacitance low frequency approximation in pF
-Cm_measured_high=Imhf(i,1)/(2*pi*f_high)*1E12; % this is the measured capacitance high frequency in pF
+    Cm_measured_lowb(i,1)=(Relf(i,1).*Relf(i,1))/(2*pi*f_low*Imlf(i,1))*1E12;% this is capacitance low frequency approximation in pF
+    Cm_measured_highb(i,1)=(Rehf(i,1).*Rehf(i,1))/(2*pi*f_high*Imhf(i,1))*1E12; % this is capacitance high frequency approximation in pF
+    Cm_measured_low=Imlf(i,1)/(2*pi*f_low)*1E12; % this is the measured capacitance low frequency approximation in pF
+    Cm_measured_high=Imhf(i,1)/(2*pi*f_high)*1E12; % this is the measured capacitance high frequency in pF
 end
+
 % Determine the conductance, b membrane resistance, Rm, series resistance, Rs and capacitance, C at both frequencies 
 [rootsb,b,Rs,Rm,Cm_low,Cm_high]=calculate_b_Rm_Rs_Cm(Imlf(:,1),Imhf(:,1),Relf(:,1),Rehf(:,1),f_low,f_high,n);
 % Determine the difference in parameter values calculated with those saved and plot the results
