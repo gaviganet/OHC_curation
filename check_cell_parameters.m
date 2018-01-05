@@ -2,7 +2,7 @@
 % This script determines the calculated cell parameters from admittance
 % measurements that were measured with admittance 2-sine technique. It compares the
 % measurements saved with the values re-calculated upon solving quadratic
-% equation with roots function of MATLAB.  It then calculates the
+% equation with roots function avilable within MATLAB.  It then calculates the
 % difference between the two values and plots the absolute value of the difference with respect to time. Six
 % subplots are shown.  The first suplot shows the DC voltage which is stimulus. The second is conductance,
 % the third and fourth is capacitance determined at low frequency and high frequency.
@@ -31,7 +31,7 @@
 % we have used 32 bit (version)and now 64 bit (version).  This change among environments affects the magnitude of the digital
 % numbers stored and demonstrates the need to monitor them moving forward.
 % This script is goverened by license CC BY-NC 3.0 https://creativecommons.org/licenses/by-nc/3.0/
-% Revised by Brenda Farrell November 10th 2017
+% Revised by Brenda Farrell january 5th 2018
 
 %  Load data as an array of structs into memory.  The data loaded is the data generated from translating HDF5 to MATLAB this can have 1 to 89 arrays
 close all % remove all figures
@@ -44,7 +44,7 @@ load(strcat('array_of_hdf52mat_out','.mat'));
 pathfunctions=('C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format\final functions\Package');
 cd(pathfunctions)
 % Transfer the data into floats from structure to calculate parameters 
-k=1; % This is number of structure within array of structs you are looking at change this to look at other data
+k=1; % This is number of the structure within array of structs you are looking at change this to look at other data
 % values measured during an experiment
 Imlf=array_of_hdf52mat_out(1,k).Imlf_Y_;
 Imhf=array_of_hdf52mat_out(1,k).Imhf_Y_;
@@ -77,10 +77,10 @@ while(i<n)
  n=n-1;   
  
 for i=1:1:n
-Cm_measured_lowb(i,1)=(Relf(i,1).*Relf(i,1))/(2*pi*f_low*Imlf(i,1))*1E12;% this is the measured capacitance high frequency approximation
-Cm_measured_highb(i,1)=(Rehf(i,1).*Rehf(i,1))/(2*pi*f_high*Imhf(i,1))*1E12;
-Cm_measured_low=Imlf(i,1)/(2*pi*f_low)*1E12; % this is the measured capacitance low frequency approximation 
-Cm_measured_high=Imhf(i,1)/(2*pi*f_high)*1E12; % this is the measured capacitance high frequency 
+Cm_measured_lowb(i,1)=(Relf(i,1).*Relf(i,1))/(2*pi*f_low*Imlf(i,1))*1E12;% this is capacitance low frequency approximation in pF
+Cm_measured_highb(i,1)=(Rehf(i,1).*Rehf(i,1))/(2*pi*f_high*Imhf(i,1))*1E12; % this is capacitance high frequency approximation in pF
+Cm_measured_low=Imlf(i,1)/(2*pi*f_low)*1E12; % this is the measured capacitance low frequency approximation in pF
+Cm_measured_high=Imhf(i,1)/(2*pi*f_high)*1E12; % this is the measured capacitance high frequency in pF
 end
 % Determine the conductance, b membrane resistance, Rm, series resistance, Rs and capacitance, C at both frequencies 
 [rootsb,b,Rs,Rm,Cm_low,Cm_high]=calculate_b_Rm_Rs_Cm(Imlf(:,1),Imhf(:,1),Relf(:,1),Rehf(:,1),f_low,f_high,n);
