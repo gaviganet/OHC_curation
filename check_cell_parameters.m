@@ -41,7 +41,7 @@ genpath('pathsavedata');
 cd(pathsavedata);
 load(strcat('array_of_hdf52mat_out','.mat'));  %file with data
 
-pathfunctions=('C:\Users\bfarrell\Documents\M files\OHC analysis\HDF5format\final functions\Package');
+pathfunctions=('C:\Users\bfarrell\Documents\GitHub\OHC_curation');
 cd(pathfunctions)
 
 % Transfer the data into floats from structure to calculate parameters 
