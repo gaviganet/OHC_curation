@@ -16,7 +16,7 @@ To examine the data in MATLAB use BACKFLOW_script.m to create a Table and give i
             arm_assayv11a.m
             arm_data_transformation.m
             
-      (1C) Each of the five (5) different functions calls another seven (7) functions
+      (1C) Each of the six (6) different functions calls another seven (7) functions
             create_and_write_double_dataset.m
             create_and_write_int_dataset.m
             create_and_write_string_dataset.m
