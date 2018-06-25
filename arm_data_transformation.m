@@ -28,7 +28,7 @@ ATTRIBUTE      = 'imported_from';
 description=  'http://purl.obolibrary.org/obo/OBI_0200000';
 dadefinition= char(description);
 write_attribute_for_group(group_id_lc,dadefinition,ATTRIBUTE)
-group_id_lc2 = H5G.create(fileID, '/data transformation/mean current vs holding potential,(I_mean vs V_hold) data set', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_lc2 = H5G.create(fileID, '/data transformation/mean current vs membrane potential,(I_mean vs membrane potential) data set', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 didefinition= 'The mean current versus holding potential data set determined from DC recordings';
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
@@ -42,7 +42,7 @@ type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
 dimw =length(V_hold);
 dim0=1;
-didefinition= 'V_hold'; 
+didefinition= 'membrane_potential'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_lc2,space,type,dim0,dimw,name_def,V_hold);  %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
@@ -69,7 +69,7 @@ name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_lc2,space,type,dim0,dimw,name_def,R);  %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'resistance i.e.,(Rm+Rs) equivalent to reciprocal of conductance at each voltage. Conductance is determined by calculating the derivative between adjacent V_hold, I_mean points of scatter plot'; 
+description= 'resistance i.e.,(Rm+Rs) equivalent to reciprocal of conductance at each voltage. Conductance is determined by calculating the derivative between adjacent membrane potential, I_mean points of scatter plot'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -284,7 +284,7 @@ name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_1fa,space,type,dim0,dimw,name_def,q_hf); %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Charge moved as a function of potential at high frequency'; 
+description= 'Charge movememt at specific membrane potential at high frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -303,7 +303,7 @@ name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_1fa,space,type,dim0,dimw,name_def,q_lf); %calls function
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Charge moved as a function of potential at low frequency'; 
+description= 'Charge movement at specific membrane potential at low frequency stimulus'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 ATTRIBUTE      = 'units';
@@ -321,7 +321,7 @@ name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_1f,space,type,dim0,dimw,name_def,potential); %calls function
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Transmembrane potential of non-linear component'; 
+description= 'The electrical potential difference across a plasma membrane. The DC electric potential applied to the cytoplasm of the cell where the potential outside the cell is defined as zero.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
