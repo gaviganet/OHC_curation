@@ -144,7 +144,7 @@ write_attribute_for_group(group_id_4b,dadefinition,ATTRIBUTE);
 voltage=array_of_do_fits(1,j).voltage;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-didefinition= 'electric_potential'; 
+didefinition= 'membrane_potential'; 
 name_def= char(didefinition);
 dimw =length(voltage);
 dim0=1;
@@ -159,13 +159,14 @@ dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
 ATTRIBUTE      = 'definition';
-description= 'A quality that is equal to the potential energy per unit charge associated with a static (time-invariant) electric field, also called the electrostatic potential. In this case it is the DC electric potential applied to the cytoplasm of the cell where the potential outside the cell is defined as zero'; 
+description= 'The electrical potential difference across a plasma membrane. The DC electric potential applied to the cytoplasm of the cell where the potential outside the cell is defined as zero.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'imported from';
-description= 'http://purl.obolibrary.org/obo/PATO_0001464'; 
+description= 'http://purl.obolibrary.org/obo/NCIT_C82324';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
 
 switch array_of_do_fits(1,j).freql
     case 781.250;
@@ -192,11 +193,13 @@ DATASETID=create_write_array_of_dble_dset(group_id_4b,space,type,dim0,dimw,name_
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'note on stimulus';
-description= 'two sine waves at stipulated simulating frequency each with peak to peak amplitude of 10 mV were added to  DC electric potential'; 
+description= 'two sine waves at stipulated simulating frequency each with peak to peak amplitude of 10 mV were added to  DC electric membrane potential'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'definition';
-description= 'frequency is a physical quality which inheres in a bearer by virtue of the number of the bearers repetitive actions in a particular time. In this case it is the low and high frequency of the sine waves used to stimulate the cell and measure the admittance';
+%description= 'frequency is a physical quality which inheres in a bearer by virtue of the number of the bearers repetitive actions in a particular time. In this case it is the low and high frequency of the sine waves used to stimulate the cell and measure the admittance';
+description= 'The two frequencies, f1 and f2 (where f2 = 2 X f1) of the AC voltage sine waves used to stimulate the cell and measure the admittance';
+
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'imported from';
@@ -276,7 +279,7 @@ space = H5S.create('H5S_SCALAR');
 dimw =length(voltage_DC);
 dim0=1;
 
-didefinition= 'electric_potenital'; 
+didefinition= 'membrane_potenital'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_4c,space,type,dim0,dimw,name_def, voltage_DC);  %calls function
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
@@ -290,13 +293,14 @@ dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
 ATTRIBUTE      = 'definition';
-description= 'electric potential is a quality that is equal to the potential energy per unit charge associated with a static (time-invariant) electric field, also called the electrostatic potential. In this case it is the DC potential applied to inside the cell where the potential outside of the cell is defined as zero.'; 
+description= 'The electrical potential difference across a plasma membrane. The DC potential applied inside the cell where the potential outside of the cell is defined as zero.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'imported from';
-description= 'http://purl.obolibrary.org/obo/PATO_0001464'; 
+description= 'http://purl.obolibrary.org/obo/NCIT_C82324.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
 end
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1064,7 +1068,9 @@ description= 'kPa';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'definition';
-description= 'pressure is a physical quality that inheres in a bearer by virtue of the bearers amount of force per unit area it exerts. In this case it is pressure at the pipette';
+%description= 'pressure is a physical quality that inheres in a bearer by virtue of the bearers amount of force per unit area it exerts. In this case it is pressure at the pipette';
+description= 'pressure at the pipette';
+
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'imported from';
