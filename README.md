@@ -10,7 +10,7 @@ To examine the data in MATLAB use BACKFLOW_script.m to create a Table and give i
       
       (1B) This script calls 5 different functions that represent five arms of the curated data-set. These files are:
             arm_organismv8a.m
-            arm_anatomicalv6a.m
+            arm_anatomicalv6b.m
             arm_devicev6a.m
             arm_cellv6a.m
             arm_assayv11a.m
