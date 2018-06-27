@@ -84,14 +84,14 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 pressure_clamp='HSPC-1 ALA Scientific Instruments';
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
-name_def='pressure_clamp';
+name_def='pipette_pressure_clamp';
 DATASETID=create_and_write_string_dataset(group_id_le,space,type,name_def,pressure_clamp);
 % 
 % %%%%%%%%%%%%%add definition
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
-didefinition='High speed pressure clamp used to control pipette pressure during the assay'; 
+didefinition='Measures and clamps the pressure to a desired level'; 
 dadefinition= char(didefinition);
 ATTRIBUTE='definition';
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);

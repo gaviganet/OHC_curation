@@ -806,7 +806,7 @@ DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_
 % 
 % 
 ATTRIBUTE      = 'definition';
-description= 'Imaginary component of electrical admittance measured at lower frequency. It is the susceptance that describes the dynamic characteristics of capacitors and inductors within an electrical circuit.'; 
+description= 'Imaginary component of electrical admittance measured at f1 the lower frequency. It is the susceptance that describes the dynamic characteristics of capacitors and inductors within an electrical circuit.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -821,21 +821,21 @@ description={fnadmittance};
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-Relf=array_of_do_fits(1,j).Relf;
+Ref1=array_of_do_fits(1,j).Relf;
 
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'Relf(Y)'; 
+didefinition= 'Ref1(Y)'; 
 name_def= char(didefinition);
 dim0=1;
-dimw =length(Relf);
+dimw =length(Ref1);
 
-DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Relf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Ref1); %calls function
 
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-description= 'Real component of electrical admittance measured at  lower frequency. It is the conductance, where electrical admittance is a measure of how easily a circuit allows current to flow.'; 
+description= 'Real component of electrical admittance measured at f1 the lower frequency. It is the conductance, where electrical admittance is a measure of how easily a circuit allows current to flow.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -849,19 +849,19 @@ ATTRIBUTE      = 'units';
 description= 'siemens';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-Imhf=array_of_do_fits(1,j).Imhf;
+Imf2=array_of_do_fits(1,j).Imhf;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'Imhf(Y)'; 
+didefinition= 'Imf2(Y)'; 
 name_def= char(didefinition);
 dim0=1;
-dimw =length(Imhf);
+dimw =length(Imf2);
 
-DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Imhf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Imf2); %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
  ATTRIBUTE      = 'definition';
-description= 'Imaginary component of electrical admittance measured at high frequency. It is the suseptance that describes the dynamic characteristics of capacitors and inductors within an electrical circuit.'; 
+description= 'Imaginary component of electrical admittance measured at f2 the higher frequency. It is the suseptance that describes the dynamic characteristics of capacitors and inductors within an electrical circuit.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'original filename of admittance file';
@@ -878,12 +878,12 @@ Rehf=array_of_do_fits(1,j).Rehf;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
 dimw =length(Rehf);
-didefinition= 'Rehf(Y)'; 
+didefinition= 'Ref2(Y)'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Rehf); %calls function
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Real component of electrical admittance measured at high frequency. It is the conductance, where electrical admittance is a measure of how easily a circuit allows current to flow.'; 
+description= 'Real component of electrical admittance measured at f2 the higher frequency. It is the conductance, where electrical admittance is a measure of how easily a circuit allows current to flow.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -946,17 +946,17 @@ description= 'Mohm';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-Cmlf=array_of_do_fits(1,j).calf;
+Cmf1=array_of_do_fits(1,j).calf;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-dimw =length(Cmlf);
-didefinition= 'Cmlf'; 
+dimw =length(Cmf1);
+didefinition= 'Cmf1'; 
 name_def= char(didefinition);
-DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Cmlf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Cmf1); %calls function
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'membrane capacitance determined at low frequency. Ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
+description= 'membrane capacitance determined at f1 the lower frequency. Ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'predicted value';
@@ -968,19 +968,19 @@ description= 'pF';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
-Cmhf=array_of_do_fits(1,j).cahf;
+Cmf2=array_of_do_fits(1,j).cahf;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-dimw =length(Cmhf);
+dimw =length(Cmf2);
 dim0=1;
-didefinition= 'Cmhf'; 
+didefinition= 'Cmf2'; 
 name_def= char(didefinition);
 % 
- DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Cmhf); %calls function
+ DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Cmf2); %calls function
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'membrane capacitance determined at high frequency. Ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
+description= 'membrane capacitance determined at f2 the higher frequency. Ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 
@@ -1069,7 +1069,7 @@ dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'definition';
 %description= 'pressure is a physical quality that inheres in a bearer by virtue of the bearers amount of force per unit area it exerts. In this case it is pressure at the pipette';
-description= 'pressure at the pipette';
+description= 'pressure at the patch pipette';
 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)

@@ -64,7 +64,7 @@ type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
 dimw =length(R);
 dim0=1;
-didefinition= 'R'; 
+didefinition= 'Rb'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_lc2,space,type,dim0,dimw,name_def,R);  %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
@@ -119,20 +119,20 @@ dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_1e,dadefinition,ATTRIBUTE);
 %
-LC_lf_mean=array_of_do_fits(1,j).LC_low_mean(1,1);
-LC_lf_std=array_of_do_fits(1,j).LC_low_mean(1,2);
-LC_lf=[LC_lf_mean
-    LC_lf_std];
+LC_f1_mean=array_of_do_fits(1,j).LC_low_mean(1,1);
+LC_f1_std=array_of_do_fits(1,j).LC_low_mean(1,2);
+LC_f1=[LC_f1_mean
+    LC_f1_std];
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-dimw =length(LC_lf);
+dimw =length(LC_f1);
 dim0=1;
-didefinition= 'LC_lf_mean'; 
+didefinition= 'LC_f1_mean'; 
 name_def= char(didefinition);
- DATASETID=create_write_array_of_dble_dset(group_id_1e,space,type,dim0,dimw,name_def,LC_lf); %calls function
+ DATASETID=create_write_array_of_dble_dset(group_id_1e,space,type,dim0,dimw,name_def,LC_f1); %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'mean standard deviation of linear membrane capacitance determined from capacitance obtained at low frequency, Cmlf'; 
+description= 'mean standard deviation of linear membrane capacitance determined from capacitance obtained at lower frequency, Cmf1'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
@@ -141,18 +141,18 @@ description= 'pF';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % %
-LC_hf_mean=array_of_do_fits(1,j).LC_high_mean(1,1);
-LC_hf_std=array_of_do_fits(1,j).LC_high_mean(1,2);
-LC_hf=[LC_hf_mean
-    LC_hf_std];
+LC_f2_mean=array_of_do_fits(1,j).LC_high_mean(1,1);
+LC_f2_std=array_of_do_fits(1,j).LC_high_mean(1,2);
+LC_f2=[LC_f2_mean
+    LC_f2_std];
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-dimw =length(LC_hf);
+dimw =length(LC_f2);
 dim0=1;
-didefinition= 'LC_hf_mean'; 
+didefinition= 'LC_f2_mean'; 
 name_def= char(didefinition);
 
-DATASETID=create_write_array_of_dble_dset(group_id_1e,space,type,dim0,dimw,name_def,LC_hf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_1e,space,type,dim0,dimw,name_def,LC_f2); %calls function
 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
@@ -230,17 +230,17 @@ dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_1f,dadefinition,ATTRIBUTE);
 
-NLC_lf=array_of_do_fits(1,j).NLC_low;
+NLC_f1=array_of_do_fits(1,j).NLC_low;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dim0=1;
-dimw =length(NLC_lf);
-didefinition= 'NLC_lf'; 
+dimw =length(NLC_f1);
+didefinition= 'NLC_f1'; 
 name_def= char(didefinition);
-DATASETID=create_write_array_of_dble_dset(group_id_1f,space,type,dim0,dimw,name_def,NLC_lf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_1f,space,type,dim0,dimw,name_def,NLC_f1); %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Non-linear or voltage dependent capacitance determined at low frequency'; 
+description= 'Non-linear,  voltage-dependent or differential capacitance determined at the lower frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -249,17 +249,17 @@ description= 'pF';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 %
-NLC_hf=array_of_do_fits(1,j).NLC_high;
+NLC_f2=array_of_do_fits(1,j).NLC_high;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dim0=1;
-dimw =length(NLC_hf);
-didefinition= 'NLC_hf'; 
+dimw =length(NLC_f2);
+didefinition= 'NLC_f2'; 
 name_def= char(didefinition);
-DATASETID=create_write_array_of_dble_dset(group_id_1f,space,type,dim0,dimw,name_def,NLC_hf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_1f,space,type,dim0,dimw,name_def,NLC_f2); %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Non-linear or voltage dependent capacitance determined at high frequency'; 
+description= 'Non-linear, voltage dependent or differential capacitance determined at higher frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -274,17 +274,17 @@ didefinition=  'Determing the charge by integrating the area under the curve of 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_1fa,dadefinition,ATTRIBUTE);
-q_hf=array_of_do_fits(1,j).q_high;
+q_f2=array_of_do_fits(1,j).q_high;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dim0=1;
-dimw =length(q_hf);
-didefinition= 'q_hf'; 
+dimw =length(q_f2);
+didefinition= 'q_f2'; 
 name_def= char(didefinition);
-DATASETID=create_write_array_of_dble_dset(group_id_1fa,space,type,dim0,dimw,name_def,q_hf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_1fa,space,type,dim0,dimw,name_def,q_f2); %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Charge movememt at specific membrane potential at high frequency'; 
+description= 'Charge movememt at specific membrane potential at f2 the higher frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -293,17 +293,17 @@ description= 'pC';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-q_lf=array_of_do_fits(1,j).q_low;
+q_f1=array_of_do_fits(1,j).q_low;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dim0=1;
-dimw =length(q_lf);
-didefinition= 'q_lf'; 
+dimw =length(q_f1);
+didefinition= 'q_f1'; 
 name_def= char(didefinition);
-DATASETID=create_write_array_of_dble_dset(group_id_1fa,space,type,dim0,dimw,name_def,q_lf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_1fa,space,type,dim0,dimw,name_def,q_f1); %calls function
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Charge movement at specific membrane potential at low frequency stimulus'; 
+description= 'Charge movement at specific membrane potential at f2 the lower frequency stimulus'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 ATTRIBUTE      = 'units';
@@ -337,16 +337,16 @@ ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_1f2,dadefinition,ATTRIBUTE);
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-NLC_lf_peak=array_of_do_fits(1,j).NLC_low_peak(1,1);
+NLC_f1_peak=array_of_do_fits(1,j).NLC_low_peak(1,1);
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-didefinition= 'NLC_lf_peak'; 
+didefinition= 'NLC_f1_peak'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,NLC_lf_peak);
+DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,NLC_f1_peak);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
 ATTRIBUTE      = 'definition';
-description= 'Peak capacitance determined at low frequency'; 
+description= 'Peak capacitance determined at f1 the lower frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -355,17 +355,17 @@ description= 'pF';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % %
-NLC_hf_peak=array_of_do_fits(1,j).NLC_high_peak(1,1);
+NLC_f2_peak=array_of_do_fits(1,j).NLC_high_peak(1,1);
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-didefinition= 'NLC_hf_peak'; 
+didefinition= 'NLC_f2_peak'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,NLC_hf_peak);
+DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,NLC_f2_peak);
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
 ATTRIBUTE      = 'definition';
-description= 'Peak capacitance determined at high frequency'; 
+description= 'Peak capacitance determined at f2 the higher frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -374,15 +374,15 @@ description= 'pF';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
-Q_lf=array_of_do_fits(1,j).Q_low_total(1,1);
+Q_f1=array_of_do_fits(1,j).Q_low_total(1,1);
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-didefinition= 'Q_lf'; 
+didefinition= 'Q_f1'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,Q_lf);
+DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,Q_f1);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Maximum charge movement low frequency'; 
+description= 'Maximum charge movement at f1 the lower frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -390,15 +390,15 @@ description= 'pC';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-Q_hf=array_of_do_fits(1,j).Q_high_total(1,1);
+Q_f2=array_of_do_fits(1,j).Q_high_total(1,1);
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-didefinition= 'Q_hf'; 
+didefinition= 'Q_f2'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,Q_hf);
+DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,Q_f2);
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Maximum charge movement high frequency'; 
+description= 'Maximum charge movement at f2 the higher frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -421,7 +421,7 @@ DATASETID=create_write_array_of_dble_dset(group_id_1f2,space,type,dim0,dimw,name
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
 ATTRIBUTE      = 'definition';
-description= 'Voltage at peak capacitance: measured and corrected for voltage drop'; 
+description= 'Voltage at peak capacitance: measured value and value corrected for voltage drop'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -429,16 +429,16 @@ description= 'volts';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-VSmax_lf=max(diff(array_of_do_fits(1,j).q_low/(max(array_of_do_fits(1,j).q_low)))./(array_of_do_fits(1,j).potential(array_of_do_fits(1).NLpositions(1,1)+3)-array_of_do_fits(1,j).potential(array_of_do_fits(1,j).NLpositions(1,1)+2)));
+VSmax_f1=max(diff(array_of_do_fits(1,j).q_low/(max(array_of_do_fits(1,j).q_low)))./(array_of_do_fits(1,j).potential(array_of_do_fits(1).NLpositions(1,1)+3)-array_of_do_fits(1,j).potential(array_of_do_fits(1,j).NLpositions(1,1)+2)));
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-didefinition= 'VSmax_lf'; 
+didefinition= 'VSmax_f1'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,VSmax_lf);
+DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,VSmax_f1);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
 ATTRIBUTE      = 'definition';
-description= 'maximum voltage sensitivity measured at low frequency'; 
+description= 'maximum voltage sensitivity measured at f1 the lower frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
@@ -447,16 +447,16 @@ description= 'per volt';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-VSmax_hf=max(diff(array_of_do_fits(1,j).q_high/(max(array_of_do_fits(1,j).q_high)))./(array_of_do_fits(1,j).potential(array_of_do_fits(1,j).NLpositions(1,1)+3)-array_of_do_fits(1,j).potential(array_of_do_fits(1,j).NLpositions(1,1)+2)));
+VSmax_f2=max(diff(array_of_do_fits(1,j).q_high/(max(array_of_do_fits(1,j).q_high)))./(array_of_do_fits(1,j).potential(array_of_do_fits(1,j).NLpositions(1,1)+3)-array_of_do_fits(1,j).potential(array_of_do_fits(1,j).NLpositions(1,1)+2)));
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'VSmax_hf'; 
+didefinition= 'VSmax_f2'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,VSmax_hf);
+DATASETID=create_and_write_double_dataset(group_id_1f2,space,type,name_def,VSmax_f2);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
 ATTRIBUTE      = 'definition';
-description= 'maximum voltage sensitivity measured at high frequency'; 
+description= 'maximum voltage sensitivity measured at f2 the higher frequency'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
@@ -493,11 +493,11 @@ DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,Qmax_q
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-description= 'Maximum charge calculated at frequency with highest signal to noise'; 
+description= 'Maximum charge calculated'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'note';
-description= 'calculated from q versus V data for data with frequency with highest signal to noise'; 
+description= 'calculated from charge, q versus membrane potential, V data'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -505,20 +505,20 @@ description= 'pC';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 %
-Qmax_CvsV=array_of_do_fits(1,j).twostate_cvsv_constrained(1,1);
+Qmax_CmvsV=array_of_do_fits(1,j).twostate_cvsv_constrained(1,1);
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'Qmax_CvsV'; 
+didefinition= 'Qmax_CmvsV'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,Qmax_CvsV);
+DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,Qmax_CmvsV);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-description= 'Maximum charge calculated at frequency with highest signal to noise'; 
+description= 'Maximum charge calculated'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'note';
-description= 'calculated from C versus V data for data with frequency with highest signal to noise'; 
+description= 'calculated from non-linear capacitance versus membrane potential data'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -536,11 +536,11 @@ DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,Vhalf_
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-description= 'Voltage calculated when half of maximum charge was attained for frequency with highest signal to noise'; 
+description= 'Voltage calculated when half of maximum charge was attained'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'note';
-description= 'calculated from q versus V data for data with frequency with highest signal to noise'; 
+description= 'calculated from charge, q versus membrane potential, V data'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -548,20 +548,20 @@ description= 'volts';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 %
-Vhalf_CvsV=array_of_do_fits(1,j).twostate_cvsv_constrained(1,3);
+Vhalf_CmvsV=array_of_do_fits(1,j).twostate_cvsv_constrained(1,3);
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'Vhalf_CvsV'; 
+didefinition= 'Vhalf_CmvsV'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,Vhalf_CvsV);
+DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,Vhalf_CmvsV);
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-description= 'Voltage calculated when half of maximum charge was attained for frequency with highest signal to noise'; 
+description= 'Voltage calculated when half of maximum charge was attained'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'note';
-description= 'calculated from C versus V data for data with frequency with highest signal to noise'; 
+description= 'calculated from NLC, versus membrane potential, V data'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -578,11 +578,11 @@ DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,alpha_
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-description= 'Voltage sensitivity calculated for data with highest signal to noise'; 
+description= 'Voltage sensitivity calculated'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'note';
-description= 'calculated from q versus V data for data with frequency with highest signal to noise'; 
+description= 'calculated from charge, q versus membrane potential, V data'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -590,20 +590,20 @@ description= 'per volt';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 %
-alpha_CvsV=array_of_do_fits(1,j).twostate_cvsv_constrained(1,2);
+alpha_CmvsV=array_of_do_fits(1,j).twostate_cvsv_constrained(1,2);
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'alpha_CvsV'; 
+didefinition= 'alpha_CmvsV'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,alpha_CvsV);
+DATASETID=create_and_write_double_dataset(group_id_lh,space,type,name_def,alpha_CmvsV);
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-description= 'Voltage sensitivity calculated for data with highest signal to noise'; 
+description= 'Voltage sensitivity calculated'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'note';
-description= 'calculated from C versus V data for data with frequency with highest signal to noise'; 
+description= 'calculated from NLC versus membrane potential, V data'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -611,20 +611,20 @@ description= 'per volt';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 %
-low_or_high=array_of_do_fits(1,j).choice;
+f1_or_f2=array_of_do_fits(1,j).choice;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_INT');
-didefinition= 'low_or_high'; 
+didefinition= 'f1_or_f2'; 
 name_def= char(didefinition);
-DATASETID=create_and_write_int_dataset(group_id_lh,space,type,name_def,low_or_high);
+DATASETID=create_and_write_int_dataset(group_id_lh,space,type,name_def,f1_or_f2);
 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'note';
-description= 'Specifically stipulates whether the low or high frequency q versus V data was chosen for fitting to model'; 
+description= 'Specifically stipulates whether the data for fitting to model was chosen from data obtained from f1 (low) or f2 (high) stimulus frequency '; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'note 2';
-description= 'one and two represents: data obtained with low or high frequency stimulus';  
+description= 'one and two represents: data obtained with f1 (lower) or f2 (higher) frequency stimulus';  
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 clearvars -except dirname filename_fits count k_adult_male array_of_do_fits pathfunctions pathbegdata pathsavedata;
