@@ -66,13 +66,13 @@ ATTRIBUTE      = 'imported_from';
 description=  'http://purl.obolibrary.org/obo/UBERON_0001844';
 dadefinition= char(description);
 write_attribute_for_group(group_id_2f,dadefinition,ATTRIBUTE);
-group_id_2g = H5G.create(fileID, '/anatomical/cochlea/position', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_2g = H5G.create(fileID, '/anatomical/cochlea/positional polarity', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 ATTRIBUTE      = 'definition';
 didefinition= 'A spatial quality inhering in a bearer by virtue of the bearers spatial location relative to other objects in the vicinity';
 dadefinition= char(didefinition);
 write_attribute_for_group(group_id_2g,dadefinition,ATTRIBUTE);
 ATTRIBUTE      = 'imported_from';
-description=  'http://purl.obolibrary.org/obo/PATO_0000140';
+description=  ' http://purl.obolibrary.org/obo/PATO_0001769';
 dadefinition= char(description);
 write_attribute_for_group(group_id_2g,dadefinition,ATTRIBUTE);
 % 
@@ -101,13 +101,13 @@ didefinition= 'left side of head, right side of head,  unknown';
 dadefinition= char(didefinition);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-group_id_2k = H5G.create(fileID, '/anatomical/cochlea/position/positional polarity', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_2k = H5G.create(fileID, '/anatomical/cochlea/positional polarity/apical basal polarity', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 ATTRIBUTE      = 'definition';
-didefinition= 'A spatial quality inhering in a bearer by virtue of the bearers spatial location relative to other objects in the vicinity';
+didefinition= 'A positional quality inhering in a bearer by virtue of the bearers location of features or characteristics along an apical-basal axis.';
 dadefinition= char(didefinition);
 write_attribute_for_group(group_id_2k,dadefinition,ATTRIBUTE);
 ATTRIBUTE      = 'imported_from';
-description=  ' http://purl.obolibrary.org/obo/PATO_0001769';
+description=  'http://purl.obolibrary.org/obo/PATO_0002023';
 dadefinition= char(description);
 write_attribute_for_group(group_id_2k,dadefinition,ATTRIBUTE);
 % %
@@ -149,7 +149,7 @@ name_def='apical-basal polarity';
 DATASETID=create_and_write_string_dataset(group_id_2k,space,type,name_def,cochlear_region);
 % % add attributes
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder);% calls a function to add attributes
-ATTRIBUTE      = 'alternative definition';
+ATTRIBUTE      = 'note';
 description= 'Positional origin of cell used. Legal values are apical, basal or unknown'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)

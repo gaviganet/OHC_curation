@@ -78,6 +78,13 @@ dadefinition= char(didefinition);
 ATTRIBUTE      = 'Imported and adapted from';
 write_attribute_for_group(group_id_3a,dadefinition,ATTRIBUTE)
 
+description= 'Protocol of the two assays used'; 
+type = H5T.copy ('H5T_C_S1');
+space=H5S.create('H5S_SCALAR');
+didefinition= 'WCPCVCA_protocol'; 
+name_def= char(didefinition);
+DATASETID=create_and_write_string_dataset(group_id_3a,space,type,name_def,description);
+
 time_of_experiment=array_of_do_fits(1,j).toe;
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
@@ -186,7 +193,7 @@ dim0=1;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 
-didefinition= 'frequency_stimulus'; 
+didefinition= 'frequency'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_4b,space,type,dim0,dimw,name_def,freq); %calls function
 % 
@@ -1046,13 +1053,13 @@ description= 'degrees centigrade';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'definition';
-description= 'temperature is a physical quality of the thermal energy of a system. In this case describes temperature during experiment';
+description= 'Temperature during the experiment';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'imported from';
-description= 'http://purl.obolibrary.org/obo/PATO_0000146'; 
-dadefinition= char(description);
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+% ATTRIBUTE      = 'imported from';
+% description= 'http://purl.obolibrary.org/obo/PATO_0000146'; 
+% dadefinition= char(description);
+% specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 
 
 pressure=array_of_do_fits(1,j).pressure;

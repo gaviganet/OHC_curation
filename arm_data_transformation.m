@@ -329,7 +329,7 @@ description= 'volts';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % this is data extraction region
-group_id_1f2 = H5G.create(fileID, '/data transformation/partitioning data/non-linear (voltage dependent) data sets/extracted_from_scatter_plot', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_1f2 = H5G.create(fileID, '/data transformation/partitioning data/non-linear (voltage dependent) data sets/data extracted from scatter plot', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 
 didefinition=  'Electrical properties extracted from scatter plots of the non-linear capacitance and charge as a function of membrane potential';
 dadefinition= char(didefinition);
@@ -477,8 +477,8 @@ description=  ' http://purl.obolibrary.org/obo/OBI_0200072';
 dadefinition= char(description);
 write_attribute_for_group(group_id_1g,dadefinition,ATTRIBUTE);
 
-group_id_lh = H5G.create(fileID, '/data transformation/partitioning data/non-linear (voltage dependent) data sets/curve-fitting transformation/Two-state Boltzmann', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
- didefinition= 'Cell electrical properties calculated by fitting charge versus potential data and capacitance versus potential data to a two-state Boltzmann model with constraints on values';
+group_id_lh = H5G.create(fileID, '/data transformation/partitioning data/non-linear (voltage dependent) data sets/curve-fitting transformation/predicted values upon fit of non-linear data to 2-state Boltzmann', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+ didefinition= 'Cell electrical properties calculated by fitting charge versus potential data and capacitance versus potential data to a two-state Boltzmann model with constraints on predicted values.';
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_lh,dadefinition,ATTRIBUTE);

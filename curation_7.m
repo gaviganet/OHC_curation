@@ -78,7 +78,7 @@ function curation_7()
 % “definition’, “units’ or ‘note’ and the “dadefinition” is the actual
 % description of the definition units or note. They are attached to dataset
 % with id: DATASETID.
-% Updated June 18 2018
+% Updated June 28 2018
 % Copyright Brenda Farrell and Jason Bengtson
 warning('off'); % have this because prints of warnings slows code
 
@@ -110,7 +110,7 @@ count =0;
 %
 arm_organismv8a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
- arm_anatomicalv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
+ arm_anatomicalv6b(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
  arm_assayv11a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 arm_cellv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_data_transformation(dirname,filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
@@ -140,7 +140,7 @@ filename_fits='R1_prepubmale_mat2hdf5_out';
 count =39;
 arm_organismv8a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata)
- arm_anatomicalv6a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
+ arm_anatomicalv6b(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
  arm_assayv11a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata)
 arm_cellv6a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_data_transformation(dirname,filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
@@ -168,7 +168,7 @@ filename_fits='R1_prepubfemale_mat2hdf5_out.mat';
 count =60;
 arm_organismv8a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
-arm_anatomicalv6a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
+arm_anatomicalv6b(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_cellv6a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_assayv11a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_data_transformation(dirname,filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
@@ -197,7 +197,7 @@ filename_fits='R1_midestrousfemale_mat2hdf5_out.mat';
 count =88;
 arm_organismv8a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
-arm_anatomicalv6a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
+arm_anatomicalv6b(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_cellv6a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_assayv11a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_data_transformation(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
