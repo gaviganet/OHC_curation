@@ -78,7 +78,7 @@ dadefinition= char(didefinition);
 ATTRIBUTE      = 'Imported and adapted from';
 write_attribute_for_group(group_id_3a,dadefinition,ATTRIBUTE)
 
-description= 'Protocol of the two assays used'; 
+description= 'The frequency dependent protocol. The admittance was monitored during a dc voltage ramp with a dual-frequency stimulus. The membrane potential was ramped from negative 0.18 to positive 0.18 V, and initially and finally held at membrane potential of negative 0.06 V.  The dual-frequency stimulus was the sum of two 10 mV peak-to-peak sine waves at frequency, f1 and f2, (where f2 =2 times f1).  The membrane current was measured every 10 microseconds and a Fast Fourier Transform conducted from a series of current measurements equivalent to the time that 4 (f1) and 8 (f2) dual frequency sine waves were applied across the membrane.  The real and imaginary parts of the admittance were calculated by dividing the complex current by the complex voltage. (2) Frequency-independent protocol. A square wave pulse with an amplitude of 0.01 V was applied to the cell via the pipette to determine the membrane current as a function of membrane potential. The voltage was ramped from negative 0.13 to positive 0.13 V in 0.01 V steps and current was sampled every 100 microseconds 1000 times at each voltage. The conductance was calculated from the change in the steady-state part of the measured current relative to the change in the membrane potential, and the resistance determined from the reciprocal of the conductance.'; 
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
 didefinition= 'WCPCVCA_protocol'; 
@@ -111,7 +111,7 @@ else
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 end    
-didefinition= 'time_interval_since_death'; 
+didefinition= 'time_interval_from_death'; 
 name_def= char(didefinition);
 DATASETID=create_and_write_double_dataset(group_id_3a,space,type,name_def,elapsed_time);
 % 

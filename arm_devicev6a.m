@@ -53,6 +53,33 @@ dadefinition= char(didefinition);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 % %%%%%%%%%%%%%add definition
 % 
+micropipette_puller='Model P-2000 Sutter Instrument Co.';
+type = H5T.copy ('H5T_C_S1');
+space=H5S.create('H5S_SCALAR');
+name_def='micropipette_puller';
+DATASETID=create_and_write_string_dataset(group_id_ld,space,type,name_def,micropipette_puller);
+ATTRIBUTE      = 'definition';
+didefinition='A device that is used to fabricate glass micropipettes';
+dadefinition= char(didefinition);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+ATTRIBUTE='imported from';
+didefinition= 'http://purl.obolibrary.org/obo/OBI_0001124';
+dadefinition= char(didefinition);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+%
+patch_pipette='quartz';
+type = H5T.copy ('H5T_C_S1');
+space=H5S.create('H5S_SCALAR');
+name_def='patch_pipette';
+DATASETID=create_and_write_string_dataset(group_id_ld,space,type,name_def,patch_pipette);
+ATTRIBUTE      = 'definition';
+didefinition='Glass pipette fabricated with a micron sized opening (e.g., 1-3 micron) and a short taper (e.g., 1-3 mm) and usually made from borosilicate glass or quartz. It is used to form the electrode in the patch-clamp technique. ';
+dadefinition= char(didefinition);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+ATTRIBUTE='note';
+didefinition= 'the outside taper of the pipette was coated with Sylgard';
+dadefinition= char(didefinition);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
 group_id_le = H5G.create(fileID, '/device/measurement device', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
