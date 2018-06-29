@@ -49,7 +49,7 @@ write_attribute_for_group(group_id_2a,dadefinition,ATTRIBUTE)
 mass=array_of_do_fits(1,j).weight;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space=H5S.create('H5S_SCALAR');
-name_def='mass measurement';
+name_def='mass';
 DATASETID=create_and_write_double_dataset(group_id_2a,space,type,name_def,mass);
 %attributes
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
@@ -130,7 +130,7 @@ if(strcmp(phenotype,'tricolor'))
 end   
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
-name_def='mammalian phenotype';
+name_def='mammalian_phenotype';
 DATASETID=create_and_write_string_dataset(group_id_2a,space,type,name_def,phenotype);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
@@ -185,7 +185,8 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 estrous_cycle_phase=array_of_do_fits(1,j).estrous;
 if(strcmp(estrous_cycle_phase,'NA')==1)
     estrous_cycle_phase='NULL';
-   else    
+else   
+       estrous_cycle_phase='metestrus';
 end
 space=H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_C_S1');
@@ -218,7 +219,7 @@ if(strcmp(sex,'M'))
    sex='male';
 end
 type = H5T.copy ('H5T_C_S1');
-name_def='phenotypic sex';
+name_def='Phenotypic_sex';
 DATASETID=create_and_write_string_dataset(group_id_2a,space,type,name_def,sex);
 
 %create attributes

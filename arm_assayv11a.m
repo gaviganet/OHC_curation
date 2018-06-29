@@ -1053,7 +1053,7 @@ description= 'degrees centigrade';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'definition';
-description= 'Temperature during the experiment';
+description= 'temperature that assay was conducted at';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % ATTRIBUTE      = 'imported from';
@@ -1065,7 +1065,7 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 pressure=array_of_do_fits(1,j).pressure;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
-didefinition= 'pipette pressure'; 
+didefinition= 'pipette_pressure'; 
 name_def= char(didefinition);
 DATASETID=create_and_write_double_dataset(group_id_5,space,type,name_def,pressure);
 

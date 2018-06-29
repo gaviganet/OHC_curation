@@ -144,7 +144,7 @@ end
 
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
-name_def='apical-basal polarity';
+name_def='apical_basal_polarity';
 
 DATASETID=create_and_write_string_dataset(group_id_2k,space,type,name_def,cochlear_region);
 % % add attributes
