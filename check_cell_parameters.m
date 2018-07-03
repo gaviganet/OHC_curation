@@ -2,7 +2,7 @@
 % This script determines the calculated cell parameters from admittance
 % measurements that were measured with admittance 2-sine technique. It compares the
 % measurements saved with the values re-calculated upon solving quadratic
-% equation with roots function avilable within MATLAB.  It then calculates the
+% equation with roots function found of MATLAB.  It then calculates the
 % difference between the two values and plots the absolute value of the difference with respect to time. Six
 % subplots are shown.  The first suplot shows the DC voltage which is stimulus. The second is conductance,
 % the third and fourth is capacitance determined at low frequency and high frequency.
@@ -30,8 +30,8 @@
 % a spreadsheet to be viewed with Microsoft Excel this was initially (8 bit) then later (16 bit). Likewise this data was manipulated with MATLAB where
 % we have used 32 bit (version)and now 64 bit (version).  This change among environments affects the magnitude of the digital
 % numbers stored and demonstrates the need to monitor them moving forward.
-% This script is goverened by license CC BY-NC 3.0 https://creativecommons.org/licenses/by-nc/3.0/
-% Revised by Brenda Farrell january 5th 2018
+% This script is goverened by license CC BY-NC 4.0 https://creativecommons.org/licenses/by-nc/4.0/
+% Revised by Brenda Farrell July 3rd 2018
 
 %  Load data as an array of structs into memory.  The data loaded is the data generated from translating HDF5 to MATLAB this can have 1 to 89 arrays
 close all % remove all figures
@@ -39,36 +39,33 @@ clear % clear memory
 pathsavedata=('Y:\OHC_Data\Data for portal\Specimen');
 genpath('pathsavedata');
 cd(pathsavedata);
-load(strcat('array_of_hdf52mat_out','.mat'));  %file with data
+load(strcat('array_of_hdf52mat_out','.mat'));
 
-pathfunctions=('C:\Users\bfarrell\Documents\GitHub\OHC_curation');
+pathfunctions=('C:\Users\bfarrell\Box Sync\Documents (bfarrell@bcm.edu)\M files\OHC analysis\HDF5format\final functions\Package\CHECK_CELL_PARAMETERS');
 cd(pathfunctions)
-
 % Transfer the data into floats from structure to calculate parameters 
-k=1; % This is number of the structure within array of structs you are looking at change this to look at other data
+k=1; % This is number of structure within array of structs you are looking at change this to look at other data
 % values measured during an experiment
-Imlf=array_of_hdf52mat_out(1,k).Imlf_Y_;
-Imhf=array_of_hdf52mat_out(1,k).Imhf_Y_;
-Relf=array_of_hdf52mat_out(1,k).Relf_Y_;
-Rehf=array_of_hdf52mat_out(1,k).Rehf_Y_;
-f_low=array_of_hdf52mat_out(1,k).stimulatingFrequency(1,1);
-f_high=array_of_hdf52mat_out(1,k).stimulatingFrequency(2,1);
-voltage=array_of_hdf52mat_out(1,k).voltage;
+Imlf=array_of_hdf52mat_out(1,k).Imf1_Y__a;
+Imhf=array_of_hdf52mat_out(1,k).Imf2_Y__a;
+Relf=array_of_hdf52mat_out(1,k).Ref1_Y__a;
+Rehf=array_of_hdf52mat_out(1,k).Ref2_Y__a;
+f_low=array_of_hdf52mat_out(1,k).frequency(1,1);
+f_high=array_of_hdf52mat_out(1,k).frequency(2,1);
+voltage=array_of_hdf52mat_out(1,k).membrane_potential;
 time=array_of_hdf52mat_out(1,k).time;
 cellnumber=array_of_hdf52mat_out(1,k).originalCellNumber;
-phenotype=array_of_hdf52mat_out(1,k).phenotype;
-sex=array_of_hdf52mat_out(1,k).sex;
+phenotype=array_of_hdf52mat_out(1,k).mammalian_phenotype;
+sex=array_of_hdf52mat_out(1,k).phenotypic_sex;
 researcher=array_of_hdf52mat_out(1,k).researcher;
-
 % values calculated and saved from the original measurements
-Cm_low_saved=array_of_hdf52mat_out(1,k).Cmlf;
-Cm_high_saved=array_of_hdf52mat_out(1,k).Cmhf;
+Cm_low_saved=array_of_hdf52mat_out(1,k).Cmf1;
+Cm_high_saved=array_of_hdf52mat_out(1,k).Cmf2;
 Rs_saved=array_of_hdf52mat_out(1,k).Rs;
 Rm_saved=array_of_hdf52mat_out(1,k).Rm;
 b_saved(1:1:length(Imlf),1)=(Rs_saved(1:1:length(Imlf),1)*1E6+Rm_saved(1:1:length(Imlf),1)*1E6).^(-1);
 n=length(Imlf);
 i=1;
-
 % This part ensuring there are no zero values or NaN within array
 while(i<n)
     if(Imlf(i,1)~=0||isnan(Imlf(i,1)~=1))
@@ -80,12 +77,11 @@ while(i<n)
  n=n-1;   
  
 for i=1:1:n
-    Cm_measured_lowb(i,1)=(Relf(i,1).*Relf(i,1))/(2*pi*f_low*Imlf(i,1))*1E12;% this is capacitance low frequency approximation in pF
-    Cm_measured_highb(i,1)=(Rehf(i,1).*Rehf(i,1))/(2*pi*f_high*Imhf(i,1))*1E12; % this is capacitance high frequency approximation in pF
-    Cm_measured_low=Imlf(i,1)/(2*pi*f_low)*1E12; % this is the measured capacitance low frequency approximation in pF
-    Cm_measured_high=Imhf(i,1)/(2*pi*f_high)*1E12; % this is the measured capacitance high frequency in pF
+Cm_measured_lowb(i,1)=(Relf(i,1).*Relf(i,1))/(2*pi*f_low*Imlf(i,1))*1E12;% this is the measured capacitance high frequency approximation
+Cm_measured_highb(i,1)=(Rehf(i,1).*Rehf(i,1))/(2*pi*f_high*Imhf(i,1))*1E12;
+Cm_measured_low=Imlf(i,1)/(2*pi*f_low)*1E12; % this is the measured capacitance low frequency approximation 
+Cm_measured_high=Imhf(i,1)/(2*pi*f_high)*1E12; % this is the measured capacitance high frequency 
 end
-
 % Determine the conductance, b membrane resistance, Rm, series resistance, Rs and capacitance, C at both frequencies 
 [rootsb,b,Rs,Rm,Cm_low,Cm_high]=calculate_b_Rm_Rs_Cm(Imlf(:,1),Imhf(:,1),Relf(:,1),Rehf(:,1),f_low,f_high,n);
 % Determine the difference in parameter values calculated with those saved and plot the results
