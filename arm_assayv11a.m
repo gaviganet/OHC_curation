@@ -256,13 +256,17 @@ group_id_4c = H5G.create(fileID, '/assay/voltage clamp assay/patch clamp voltage
 % % add DC datasets
 T=isempty(array_of_do_fits(1,j).delta_time);
 if(T==1)
-   
+delta_time= [];
+type = H5T.copy ('H5T_NATIVE_DOUBLE');    
+space = H5S.create('H5S_SCALAR');
+dimw=0;
 else
 delta_time=  array_of_do_fits(1,j).delta_time;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
-dim0=1;
 dimw =length(delta_time);
+end
+dim0=1;
 didefinition= 'time'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_4c,space,type,dim0,dimw,name_def,delta_time);  %calls function
@@ -275,18 +279,22 @@ ATTRIBUTE      = 'units';
 description= 'seconds';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-end
+
 T=isempty(array_of_do_fits(1,j).voltage_DC);
 if(T==1)
- 
+voltage_DC=[]; 
+type = H5T.copy ('H5T_NATIVE_DOUBLE');    
+space = H5S.create('H5S_SCALAR');
+dimw =0;
 else
    voltage_DC=  array_of_do_fits(1,j).voltage_DC;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
 dimw =length(voltage_DC);
+end
 dim0=1;
 
-didefinition= 'membrane_potenital'; 
+didefinition= 'membrane_potential_DC'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_4c,space,type,dim0,dimw,name_def, voltage_DC);  %calls function
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
@@ -308,7 +316,7 @@ description= 'http://purl.obolibrary.org/obo/NCIT_C82324.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-end
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     
@@ -800,15 +808,15 @@ write_attribute_for_group(group_id_6b,dadefinition,ATTRIBUTE);
 % funder='NIH-NLM and NIH-NIDCD'; %this is an attribute 
 % 
 % % Create datasets
-Imlf=array_of_do_fits(1,j).Imlf;
+Imf1=array_of_do_fits(1,j).Imlf;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'Imlf(Y)'; 
+didefinition= 'Imf1(Y)'; 
 name_def= char(didefinition);
 dim0=1;
-dimw =length(Imlf);
+dimw =length(Imf1);
 
-DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Imlf); %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Imf1); %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
 % 
@@ -1007,12 +1015,16 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
 T=isempty(array_of_do_fits(1,j).Current_DC);
 if(T==1)
-
+current_DC=[];
+type = H5T.copy ('H5T_NATIVE_DOUBLE');    
+space = H5S.create('H5S_SCALAR');
+dimw =0;
 else
 current_DC=array_of_do_fits(1,j).Current_DC;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
 dimw =length(current_DC);
+end
 dim0=1;
 didefinition= 'membrane_current';
 name_def= char(didefinition);
@@ -1025,6 +1037,7 @@ ATTRIBUTE      = 'units';
 description= 'pA'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+% if(T==0)
 % fnDC=array_of_do_fits(1,j).fname;
 % ATTRIBUTE      = 'original filename of saved IvsV data';
 % description={fnDC}; 
@@ -1035,7 +1048,7 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % description_two={fnDC_TC}; 
 % dadefinition= char(description_two);
 % specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
- end
+% end
 % 
 % 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

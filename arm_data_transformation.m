@@ -36,13 +36,18 @@ write_attribute_for_group(group_id_lc2,dadefinition,ATTRIBUTE)
 
 T=isempty(array_of_do_fits(1,j).V);
 if(T==1)
+    V_hold=  array_of_do_fits(1,j).V;
+type = H5T.copy ('H5T_NATIVE_DOUBLE');    
+space = H5S.create('H5S_SCALAR');
+dimw =0;
 else
  V_hold=  array_of_do_fits(1,j).V;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
 dimw =length(V_hold);
+end
 dim0=1;
-didefinition= 'membrane_potential'; 
+didefinition= 'membrane_potential_DC'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_lc2,space,type,dim0,dimw,name_def,V_hold);  %calls function
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
@@ -54,16 +59,19 @@ ATTRIBUTE      = 'units';
 description= 'volts'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-end
+
 T=isempty(array_of_do_fits(1,j).R);
 if(T==1)
-  
+ R=  array_of_do_fits(1,j).R;
+type = H5T.copy ('H5T_NATIVE_DOUBLE');    
+space = H5S.create('H5S_SCALAR');
+dimw =0;  
 else
   R=  array_of_do_fits(1,j).R;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
 dimw =length(R);
-dim0=1;
+end
 didefinition= 'Rb'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_lc2,space,type,dim0,dimw,name_def,R);  %calls function
@@ -76,15 +84,19 @@ ATTRIBUTE      = 'units';
 description= 'Mohm'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-end
+
 T=isempty(array_of_do_fits(1,j).I_mean);
 if(T==1)
-   
+   I_mean=  [];
+   type = H5T.copy ('H5T_NATIVE_DOUBLE');    
+  space = H5S.create('H5S_SCALAR');
+  dimw =[0,0];
 else
    I_mean=  array_of_do_fits(1,j).I_mean;
    type = H5T.copy ('H5T_NATIVE_DOUBLE');    
   space = H5S.create('H5S_SCALAR');
   dimw =[2,length(I_mean)];
+end  
   dim0=2;
 didefinition= 'I_mean'; 
 name_def= char(didefinition);
@@ -98,7 +110,7 @@ ATTRIBUTE      = 'units';
 description= 'pA'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-end
+
 
 
 group_id_ld = H5G.create(fileID, '/data transformation/partitioning data', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
@@ -316,7 +328,7 @@ space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dim0=1;
 dimw =length(potential);
-didefinition= 'membrane_potential'; 
+didefinition= 'membrane_potential_NLC'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_1f,space,type,dim0,dimw,name_def,potential); %calls function
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
