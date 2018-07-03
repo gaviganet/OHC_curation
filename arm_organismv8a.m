@@ -219,7 +219,7 @@ if(strcmp(sex,'M'))
    sex='male';
 end
 type = H5T.copy ('H5T_C_S1');
-name_def='Phenotypic_sex';
+name_def='phenotypic_sex';
 DATASETID=create_and_write_string_dataset(group_id_2a,space,type,name_def,sex);
 
 %create attributes
