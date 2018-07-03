@@ -30,7 +30,7 @@ To run these scripts you will need to change the paths where the original MATLAB
 
       (2A) The main M script file is HDF52MAT_script.m.  
       
-      (2B) This script calls the function HDF52MAT_v2.m.
+      (2B) This script calls the function HDF52MAT_v2a.m.
       
 (3) MATLAB scripts used to check the integrity of the data-set
 
