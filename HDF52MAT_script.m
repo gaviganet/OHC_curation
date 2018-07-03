@@ -1,6 +1,6 @@
 % This script creates two structures hdf52mat_out,
 % array_of_hdf52mat_out.  The first: structure hdf52mat_out will be used to
-% grab 79 fields of each specimen file and the second:
+% grab 83 fields of each specimen file and the second:
 % array_of_hdf52mat_out is the final collection of all the specimen data
 % (from 1 to 89 specimen files) that is translated from HDF5 to MATLAB.  N
 % is the final number of specimen files to be translated (numbered from one
@@ -13,15 +13,15 @@
 % [array_of_hdf52mat_out, INFO]= HDF52MAT_v2(hdf52mat_out,array_of_hdf52mat_out, N, beg); 
 % This function
 % returns array_of_hdf52mat_out with the requested specimen files
-% translated and saved to an array of struct each with 79 fields.  It also
+% translated and saved to an array of struct each with 81 fields.  It also
 % returns INFO a description of the last specimen file that is opened and
 % examined with MATLAB function: INFO = h5info(filename) returns
 % information about the entire HDF5 file specified by filename. The
 % structure is then translated to table format. 
-% BACKFLOW_v1 is the main
-% function of the program it grabs the three main attributes common to each
-% data set; the date of the recording; the original cell number, the
-% name of the researcher who collected the data, the data steward and the data curator.  
+% HDF2MAT_v2a is the main
+% function of the program it grabs the six main attributes common to each
+% specimen file; the date of the recording; the original cell number, the
+% name of the researcher who collected the data, the data steward, the data curator and funding sources.  
 % It then grabs all data
 % from each dataset.  This is straight-forward as the information about
 % each HDF5 file can be retrieved by h5info(filename).   The group where
@@ -48,14 +48,14 @@
 % M files are stored in different directories. Once all the data is
 % translated the file adds the working specimen with all fields to the
 % array_of_hdf52mat_out and the next specimen is translated.
-% updated Dec 14th 2017 by Brenda Farrell
+% updated July 1st 2018 by Brenda Farrell
 clear
-hdf52mat_out=struct; % this is structure for HDF2mat
+hdf52mat_out=struct; % this is structure for HDF52mat
 array_of_hdf52mat_out=struct; %this is working array for all files
-N=1;
-beg= 88;
-[array_of_hdf52mat_out, INFO]= HDF52MAT_v2(hdf52mat_out,array_of_hdf52mat_out, N, beg);
-
+N=89;
+beg= 0;
+[array_of_hdf52mat_out, INFO]= HDF52MAT_v2a(hdf52mat_out,array_of_hdf52mat_out, N, beg);
+%
 % Create Table for visualization
 Table_of_Translated_data_Woutunits=struct2table(array_of_hdf52mat_out,'AsArray',true);
 
