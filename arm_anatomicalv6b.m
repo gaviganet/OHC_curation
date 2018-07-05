@@ -1,6 +1,6 @@
 % create anatomical arm of 
 % set-up folders to load and run file
-function arm_anatomicalv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
+function arm_anatomicalv6b(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 newFolder=strcat(pathbegdata,dirname);
 genpath('newFolder');
 cd(newFolder);
@@ -46,15 +46,7 @@ description=  'http://purl.obolibrary.org/obo/UBERON_0000465';
 dadefinition= char(description);
 write_attribute_for_group(group_id_1e,dadefinition,ATTRIBUTE)
 % 
-group_id_2d = H5G.create(fileID, '/anatomical/head', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-ATTRIBUTE      = 'definition';
-didefinition= 'The head is the anterior-most division of the body'; 
-dadefinition= char(didefinition);
-write_attribute_for_group(group_id_2d,dadefinition,ATTRIBUTE);
-ATTRIBUTE      = 'imported_from';
-description=  'http://purl.obolibrary.org/obo/UBERON_0000033';
-dadefinition= char(description);
-write_attribute_for_group(group_id_2d,dadefinition,ATTRIBUTE);
+
 
 % 
 group_id_2f = H5G.create(fileID, '/anatomical/cochlea', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
@@ -66,6 +58,14 @@ ATTRIBUTE      = 'imported_from';
 description=  'http://purl.obolibrary.org/obo/UBERON_0001844';
 dadefinition= char(description);
 write_attribute_for_group(group_id_2f,dadefinition,ATTRIBUTE);
+
+group_id_2d = H5G.create(fileID, '/anatomical/cochlea/subdivision of cochlea', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+
+ATTRIBUTE      = 'imported_from';
+ description=  'http://purl.obolibrary.org/obo/FMA_61268';
+ dadefinition= char(description);
+ write_attribute_for_group(group_id_2d,dadefinition,ATTRIBUTE);
+ 
 group_id_2g = H5G.create(fileID, '/anatomical/cochlea/positional polarity', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 ATTRIBUTE      = 'definition';
 didefinition= 'A spatial quality inhering in a bearer by virtue of the bearers spatial location relative to other objects in the vicinity';
@@ -83,23 +83,16 @@ if(strcmp('E',cochlear_side)==1)
 end    
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
-name_def='position';
-DATASETID=create_and_write_string_dataset(group_id_2d,space,type,name_def,cochlear_side);
-% % add attributes
-%attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-% 
-ATTRIBUTE = 'definition';
-didefinition= 'A spatial quality inhering in a bearer by virtue of the bearers spatial location relative to other objects in the vicinity';
-dadefinition= char(didefinition);
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
-ATTRIBUTE      = 'imported_from';
-description=  'http://purl.obolibrary.org/obo/PATO_0000140';
-dadefinition= char(description);
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+name_def='cochlea';
+DATASETID=create_and_write_string_dataset(group_id_2f,space,type,name_def,cochlear_side);
 ATTRIBUTE='allowed values';
-didefinition= 'left side of head, right side of head,  unknown'; 
+didefinition= 'left cochlea, right cochlea,  unknown'; 
 dadefinition= char(didefinition);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'values imported_from';
+description=  'http://purl.obolibrary.org/obo/FMA_60203 and http://purl.obolibrary.org/obo/FMA_60202';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 
 group_id_2k = H5G.create(fileID, '/anatomical/cochlea/positional polarity/apical basal polarity', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 ATTRIBUTE      = 'definition';
@@ -125,6 +118,15 @@ DATASETID=create_and_write_int_dataset(group_id_2k,space,type,name_def,cochlear_
 
 % %add attributes
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); 
+ATTRIBUTE      = 'definition';
+description= 'Positional quality along the apical-basal axis that corresponds to whole circular sections of the cochlea.  Positional origin of cell used. '; 
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+ATTRIBUTE      = 'allowed values';
+description= 'one (1), two (2), three (3) and four (4)'; 
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+DATASETID=create_and_write_int_dataset(group_id_2d,space,type,name_def,cochlear_turn);
 ATTRIBUTE      = 'definition';
 description= 'Positional quality along the apical-basal axis that corresponds to whole circular sections of the cochlea.  Positional origin of cell used. '; 
 dadefinition= char(description);
@@ -167,3 +169,4 @@ clearvars -except dirname filename_fits count k_adult_male array_of_do_fits path
 
 end
 end
+
