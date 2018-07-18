@@ -23,7 +23,7 @@ dofexp=array_of_do_fits(1,j).dofexp;% this is an attribute
 datetime.setDefaultFormats('defaultdate','yyyy-MM-dd');
 time1=char(dofexp);
 time2=strsplit(time1,'/');
-time3=(strcat(char(time2(3)),'-',char(time2(1)),'-',char(time2(2))));
+date_ISO=(strcat(char(time2(3)),'-',char(time2(1)),'-',char(time2(2)))); %rearrange date to ISO form
 %timeiso=datetime(time3,'InputFormat','yyyy-MM-dd'); HDF5 cannot use
 %datetime format of Matlab
 
@@ -31,7 +31,7 @@ cellnumber=array_of_do_fits(1,j).cellnumber; % this is an attribute
 datasteward='Brenda Farrell, PhD';% this is an attribute
 datacurator='Jason Bengtson, MLIS, MA';% this is an attribute
 funder='NIH-NLM and NIH-NIDCD'; %this is an attribute 
-write_attribute_for_file(fileID,researcher, time3, cellnumber, datasteward, datacurator,funder);
+write_attribute_for_file(fileID,researcher, date_ISO, cellnumber, datasteward, datacurator,funder);
 % Create group structure
 group_id_1a = H5G.create(fileID, '/organism', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 didefinition= 'A material entity that is an individual living system, such as animal, plant, bacteria or virus, that is capable of replicating or reproducing, growth and maintenance in the right environment. An organism may be unicellular or made up, like humans, of many billions of cells divided into specialized tissues and organs.'; 

@@ -1,4 +1,4 @@
-function [ ] = write_attribute_for_file(fileID,researcher, time3, cellnumber, datasteward, datacurator,funder)
+function [ ] = write_attribute_for_file(fileID,researcher, date_ISO, cellnumber, datasteward, datacurator,funder)
 % Now setting up space for string attribute
 memtypest = H5T.copy ('H5T_C_S1');
 H5T.set_strpad(memtypest,'H5T_STR_SPACEPAD')
@@ -20,13 +20,12 @@ attr_1 = H5A.create(fileID,ATTRIBUTE,memtypest,space_id,att_str);
 H5A.write(attr_1, 'H5ML_DEFAULT', at_definition);
 
 ATTRIBUTE      = 'date of experiment';
- description={time3}; 
+ description={date_ISO}; 
  at_definition= char(description);
  H5T.set_size (memtypest, length(at_definition));
  attr_1 = H5A.create(fileID,ATTRIBUTE,memtypest,space_id,att_str);
  H5A.write(attr_1, 'H5ML_DEFAULT', at_definition);
-% attr_1 = H5A.create(fileID,ATTRIBUTE,memtypearr,space_id3,att_int);
-% H5A.write(attr_1, 'H5ML_DEFAULT', timeiso);
+
 
 ATTRIBUTE      = 'data steward';
 description=datasteward; 
