@@ -20,11 +20,18 @@ j=k_adult_male(i,1);
 % attributes
 researcher=array_of_do_fits(1,j).researcher; % this is an attribute
 dofexp=array_of_do_fits(1,j).dofexp;% this is an attribute
+datetime.setDefaultFormats('defaultdate','yyyy-MM-dd');
+time1=char(dofexp);
+time2=strsplit(time1,'/');
+time3=(strcat(char(time2(3)),'-',char(time2(1)),'-',char(time2(2))));
+%timeiso=datetime(time3,'InputFormat','yyyy-MM-dd'); HDF5 cannot use
+%datetime format of Matlab
+
 cellnumber=array_of_do_fits(1,j).cellnumber; % this is an attribute
 datasteward='Brenda Farrell, PhD';% this is an attribute
 datacurator='Jason Bengtson, MLIS, MA';% this is an attribute
 funder='NIH-NLM and NIH-NIDCD'; %this is an attribute 
-write_attribute_for_file(fileID,researcher, dofexp, cellnumber, datasteward, datacurator,funder);
+write_attribute_for_file(fileID,researcher, time3, cellnumber, datasteward, datacurator,funder);
 % Create group structure
 group_id_1a = H5G.create(fileID, '/organism', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 didefinition= 'A material entity that is an individual living system, such as animal, plant, bacteria or virus, that is capable of replicating or reproducing, growth and maintenance in the right environment. An organism may be unicellular or made up, like humans, of many billions of cells divided into specialized tissues and organs.'; 
@@ -72,14 +79,26 @@ ATTRIBUTE      = 'units';
 description= 'g'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
-
-life_death_temporal_boundary=array_of_do_fits(1,j).tod;
+% making time ISO8601
+tod=array_of_do_fits(1,j).tod; % this is time
+dofexp=array_of_do_fits(1,j).dofexp; % this is dofexp
+time2=strsplit(char(dofexp),'/'); 
+time3=(strcat(char(time2(3)),'-',char(time2(1)),'-',char(time2(2))));
+time4=char(tod);
+time5=strsplit(time4,':');
+ k=contains(time5(3),'P');
+ if(k==1)
+  time6=strtok(time5(3),'P');
+else
+  time6=strtok(time5(3),'A');
+ end   
+time7=(strcat(time3,"  ",char(time5(1)),':',char(time5(2)),':',char(time6)));
+life_death_temporal_boundary=char(time7);
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
 didefinition= 'life_death_temporal_boundary'; 
 name_def= char(didefinition);
 DATASETID=create_and_write_string_dataset(group_id_2a,space,type,name_def,life_death_temporal_boundary);
-
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
 description= 'A life cycle temporal boundary that marks the end of the life cycle of the organism'; 
