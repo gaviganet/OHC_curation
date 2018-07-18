@@ -85,7 +85,22 @@ didefinition= 'WCPCVCA_protocol';
 name_def= char(didefinition);
 DATASETID=create_and_write_string_dataset(group_id_3a,space,type,name_def,description);
 
-time_of_experiment=array_of_do_fits(1,j).toe;
+time_of_experiment=array_of_do_fits(1,j).toe; 
+%Change to ISO time
+dofexp=array_of_do_fits(1,j).dofexp;
+time2=strsplit(char(dofexp),'/'); 
+time3=(strcat(char(time2(3)),'-',char(time2(1)),'-',char(time2(2))));
+time4=char(time_of_experiment);
+time5=strsplit(time4,':');
+ k=contains(time5(3),'P');
+ if(k==1)
+  time6=strtok(time5(3),'P');
+else
+  time6=strtok(time5(3),'A');
+ end   
+time7=(strcat(time3,"  ",char(time5(1)),':',char(time5(2)),':',char(time6(1))));
+time_of_experiment=char(time7);
+
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
 didefinition= 'start_time'; 
@@ -166,11 +181,15 @@ dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
 ATTRIBUTE      = 'definition';
-description= 'The electrical potential difference across a plasma membrane. The DC electric potential applied to the cytoplasm of the cell where the potential outside the cell is defined as zero.'; 
+description= 'A quality inhering in a cells plasma membrane by virtue of the electrical potential difference across it.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'imported from';
-description= 'http://purl.obolibrary.org/obo/NCIT_C82324';
+ATTRIBUTE      = 'definition and label imported from';
+description= 'http://purl.obolibrary.org/obo/PATO_0001462';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'definition two';
+description= 'The DC electric potential applied to the cytoplasm of the cell where the potential outside the cell is defined as zero.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -209,7 +228,7 @@ description= 'The two frequencies, f1 and f2 (where f2 = 2 X f1) of the AC volta
 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'imported from';
+ATTRIBUTE      = 'label imported from';
 description= ' http://purl.obolibrary.org/obo/PATO_0000044'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
@@ -308,16 +327,17 @@ dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
 ATTRIBUTE      = 'definition';
-description= 'The electrical potential difference across a plasma membrane. The DC potential applied inside the cell where the potential outside of the cell is defined as zero.'; 
+description= 'A quality inhering in a cells plasma membrane by virtue of the electrical potential difference across it.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'imported from';
-description= 'http://purl.obolibrary.org/obo/NCIT_C82324.'; 
+ATTRIBUTE      = 'definition and label imported from';
+description= 'http://purl.obolibrary.org/obo/PATO_0001462';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-
-
-
+ATTRIBUTE      = 'definition two';
+description= 'The DC electric potential applied to the cytoplasm of the cell where the potential outside the cell is defined as zero.'; 
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     
 group_id_5= H5G.create(fileID, '/assay/voltage clamp assay/patch clamp voltage clamp assay/WCPCVCA/study design controlled variable', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
@@ -811,7 +831,7 @@ write_attribute_for_group(group_id_6b,dadefinition,ATTRIBUTE);
 Imf1=array_of_do_fits(1,j).Imlf;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'Imf1(Y)'; 
+didefinition= 'imaginary_part_admittance(Imf1(Y))'; 
 name_def= char(didefinition);
 dim0=1;
 dimw =length(Imf1);
@@ -821,7 +841,7 @@ DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_
 % 
 % 
 ATTRIBUTE      = 'definition';
-description= 'Imaginary component of electrical admittance measured at f1 the lower frequency. It is the susceptance that describes the dynamic characteristics of capacitors and inductors within an electrical circuit.'; 
+description= 'Imaginary component of electrical admittance. It is the susceptance that describes the dynamic (e.g. frequency-dependent) characteristics of capacitors and inductors within an electrical circuit.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -835,12 +855,17 @@ ATTRIBUTE      = 'original filename of admittance file';
 description={fnadmittance}; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'note';
+description= 'The value measured at f1 the lower frequency';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
 
 Ref1=array_of_do_fits(1,j).Relf;
 
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'Ref1(Y)'; 
+didefinition= 'real_part_admittance(Ref1(Y))'; 
 name_def= char(didefinition);
 dim0=1;
 dimw =length(Ref1);
@@ -850,7 +875,7 @@ DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-description= 'Real component of electrical admittance measured at f1 the lower frequency. It is the conductance, where electrical admittance is a measure of how easily a circuit allows current to flow.'; 
+description= 'Real component of electrical admittance. It is the conductance, where electrical admittance is a measure of how easily a circuit allows current to flow.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -864,10 +889,17 @@ ATTRIBUTE      = 'units';
 description= 'siemens';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
+ATTRIBUTE      = 'note';
+description= 'The value measured at f1 the lower frequency';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
 Imf2=array_of_do_fits(1,j).Imhf;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
-didefinition= 'Imf2(Y)'; 
+
+didefinition= 'imaginary_part_admittance(Imf2(Y))'; 
 name_def= char(didefinition);
 dim0=1;
 dimw =length(Imf2);
@@ -876,7 +908,7 @@ DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
  ATTRIBUTE      = 'definition';
-description= 'Imaginary component of electrical admittance measured at f2 the higher frequency. It is the suseptance that describes the dynamic characteristics of capacitors and inductors within an electrical circuit.'; 
+description= 'Imaginary component of electrical admittance. It is the susceptance that describes the dynamic (e.g. frequency-dependent) characteristics of capacitors and inductors within an electrical circuit.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'original filename of admittance file';
@@ -889,16 +921,22 @@ description= 'siemens';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
+ATTRIBUTE      = 'note';
+description= 'The value measured at f2 the higher frequency';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
+
 Rehf=array_of_do_fits(1,j).Rehf;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 space = H5S.create('H5S_SCALAR');
 dimw =length(Rehf);
-didefinition= 'Ref2(Y)'; 
+didefinition= 'real_part_admittance(Ref2(Y))'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Rehf); %calls function
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Real component of electrical admittance measured at f2 the higher frequency. It is the conductance, where electrical admittance is a measure of how easily a circuit allows current to flow.'; 
+description= 'Real component of electrical admittance. It is the conductance, where electrical admittance is a measure of how easily a circuit allows current to flow.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -912,16 +950,24 @@ description= 'siemens';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 
+ATTRIBUTE      = 'note';
+description= 'The value measured at f2 the higher frequency';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 Rm=array_of_do_fits(1,j).Rm;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dimw =length(Rm);
 dim0=1;
-didefinition= 'Rm'; 
+didefinition= 'membrane_resistance(Rm)'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Rm); %calls function
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
+ATTRIBUTE      = 'term imported from';
+description= 'http://purl.org/incf/ontology/Computational_Neurosciences/cno_alpha.owl#cno_0000221';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
 ATTRIBUTE      = 'units';
 description= 'Mohm';
@@ -932,15 +978,16 @@ description= 'calculated from the admittance based upon model';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
-ATTRIBUTE      = 'definition ';
+ATTRIBUTE      = 'definition';
 description=' membrane resistance, and it is a measure of how difficult it is for current to flow through the membrane. It is the ratio of the voltage across the membrane relative to the current through the membrane.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
 Rs=array_of_do_fits(1,j).Rs;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dimw =length(Rs);
-didefinition= 'Rs'; 
+didefinition= 'series_resistance(Rs)'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Rs); %calls function
 % 
@@ -965,13 +1012,13 @@ Cmf1=array_of_do_fits(1,j).calf;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dimw =length(Cmf1);
-didefinition= 'Cmf1'; 
+didefinition= 'membrane_capacitance(Cmf1)'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Cmf1); %calls function
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'membrane capacitance determined at f1 the lower frequency. Ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
+description= 'Membrane capacitance: ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'predicted value';
@@ -982,20 +1029,30 @@ ATTRIBUTE      = 'units';
 description= 'pF';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
+ATTRIBUTE      = 'label imported from';
+description= 'http://purl.org/incf/ontology/Computational_Neurosciences/cno_alpha.owl#cno_0000220';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
+ATTRIBUTE      = 'note';
+description= 'determined at f1 the lower frequency';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
 Cmf2=array_of_do_fits(1,j).cahf;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
 dimw =length(Cmf2);
 dim0=1;
-didefinition= 'Cmf2'; 
+didefinition= 'membrane_capacitance(Cmf2)'; 
 name_def= char(didefinition);
 % 
  DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Cmf2); %calls function
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'membrane capacitance determined at f2 the higher frequency. Ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
+description= 'Membrane capacitance: ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 
@@ -1006,6 +1063,15 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
 ATTRIBUTE      = 'units';
 description= 'pF';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+
+ATTRIBUTE      = 'note';
+description= 'determined at f2 the higher frequency';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'label imported from';
+description= 'http://purl.org/incf/ontology/Computational_Neurosciences/cno_alpha.owl#cno_0000220';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
@@ -1030,7 +1096,7 @@ didefinition= 'membrane_current';
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_6b,space,type,dim0,dimw,name_def,current_DC);  %calls function
 ATTRIBUTE      = 'definition';
-description= 'The measure of movement of electric charge across the membrane'; 
+description= 'The measure of rate of movement of electric charge across the membrane. The charge flow rate across the membrane.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -1093,7 +1159,7 @@ description= 'pressure at the patch pipette';
 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'imported from';
+ATTRIBUTE      = 'label for pressure imported from';
 description= 'http://purl.obolibrary.org/obo/PATO_0001025'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
