@@ -102,6 +102,16 @@ didefinition= 'http://purl.obolibrary.org/obo/OBA_1001065';
 dadefinition= char(didefinition);
 write_attribute_for_group(group_id_3a,dadefinition,ATTRIBUTE);
 
+group_id_3c = H5G.create(fileID, 'cell/outer hair cell/cell morphology/measurement datum', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+ATTRIBUTE      = 'definition';
+didefinition= 'A measurement datum is an information content entity that is a recording of the output of a measurement such as produced by a device'; 
+dadefinition= char(didefinition);
+write_attribute_for_group(group_id_3c,dadefinition,ATTRIBUTE);
+ATTRIBUTE      = 'imported from';
+didefinition= 'http://purl.obolibrary.org/obo/IAO_0000109'; 
+dadefinition= char(didefinition);
+write_attribute_for_group(group_id_3c,dadefinition,ATTRIBUTE);
+
 group_id_3b = H5G.create(fileID, 'cell/outer hair cell/cell morphology/predicted data item', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 ATTRIBUTE      = 'definition';
 didefinition= 'A data item that was generated on the basis of a calculation or logical reasoning'; 
@@ -111,7 +121,6 @@ ATTRIBUTE      = 'imported from';
 didefinition= 'http://purl.obolibrary.org/obo/OBI_0302867'; 
 dadefinition= char(didefinition);
 write_attribute_for_group(group_id_3b,dadefinition,ATTRIBUTE);
-
 % 
 % % create data sets and add their specific and non-specific attributes
 % % surface area
@@ -157,7 +166,7 @@ space=H5S.create('H5S_SCALAR');
 OHC_length=array_of_do_fits(1,j).l;
 end    
 name_def='cochlear_outer_hair_cell_length';
-DATASETID=create_and_write_double_dataset(group_id_3a,space,type,name_def,OHC_length);
+DATASETID=create_and_write_double_dataset(group_id_3c,space,type,name_def,OHC_length);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
 description= 'length of outer hair cell from basal pole to cuticular plate'; 
@@ -186,7 +195,7 @@ else
     space=H5S.create('H5S_SCALAR');
 end
 name_def='cochlear_outer_hair_cell_lateral_wall_length';
-DATASETID=create_and_write_double_dataset(group_id_3a,space,type,name_def,OHC_lateral_wall_length);
+DATASETID=create_and_write_double_dataset(group_id_3c,space,type,name_def,OHC_lateral_wall_length);
 
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attribute
 
@@ -212,7 +221,7 @@ space=H5S.create('H5S_SCALAR');
 OHC_diameter=array_of_do_fits(1,j).diameter;
 end   
 name_def='cell_diameter';
-DATASETID=create_and_write_double_dataset(group_id_3a,space,type,name_def,OHC_diameter);
+DATASETID=create_and_write_double_dataset(group_id_3c,space,type,name_def,OHC_diameter);
 % 
 %attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
