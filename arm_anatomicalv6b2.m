@@ -16,7 +16,7 @@ j=k_adult_male(i,1);
 newFolder=pathsavedata;
 genpath('newFolder');
 cd(newFolder);
-namenew=strcat('specimen_#',num2str(m),'.h5');
+namenew=strcat('sensory_cell_#',num2str(m),'.h5');
 fileID = H5F.open(namenew,'H5F_ACC_RDWR','H5P_DEFAULT');
 newFolder=pathfunctions;
 genpath('newFolder');
