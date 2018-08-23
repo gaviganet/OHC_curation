@@ -14,7 +14,7 @@ for i=1:1:length(k_adult_male)
 j=k_adult_male(i,1);
 %Create group structure for organism arm this is the first arm   
  m=count+i;
- filename = fullfile(strcat(pathsavedata,'specimen_#',num2str(m),'.h5'));
+ filename = fullfile(strcat(pathsavedata,'sensory_cell_#',num2str(m),'.h5'));
  fileID = H5F.create(filename,'H5F_ACC_TRUNC','H5P_DEFAULT','H5P_DEFAULT'); % This overwrites file with same name
 % ADDING attributes
 % attributes
@@ -186,7 +186,7 @@ DATASETID=create_and_write_string_dataset(group_id_2a,space,type,name_def,maturi
 % add attributes
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder);% calls a function to add attributes
 
-didefinition= 'A quality of a single physical entity which is held by a bearer when the latter exhibits complete growth, differentiation, or development'; 
+didefinition= 'A quality of a single physical entity which is held by a bearer when the latter exhibits a state of growth, differentiation, or development'; 
 dadefinition= char(didefinition);
 ATTRIBUTE='definition';
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
@@ -243,7 +243,7 @@ DATASETID=create_and_write_string_dataset(group_id_2a,space,type,name_def,sex);
 
 %create attributes
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-didefinition= 'gender of the subject'; 
+didefinition= 'An organismal quality inhering in a bearer by virtue of the bearers physical expression of sexual characteristics'; 
 dadefinition= char(didefinition);
 ATTRIBUTE='definition';
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
@@ -251,6 +251,26 @@ didefinition= 'http://purl.obolibrary.org/obo/PATO_0001894';
 dadefinition= char(didefinition);
 ATTRIBUTE='imported from';
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+
+% specimen collection objective
+
+didefinition='Isolate outer hair cells from mammalian cochlea';
+dadefinition= char(didefinition);
+type = H5T.copy ('H5T_C_S1');
+name_def='specimen_collection_objective';
+DATASETID=create_and_write_string_dataset(group_id_2a,space,type,name_def,dadefinition);
+dadefinition= char(didefinition);
+%create attributes
+% attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
+didefinition= 'A objective specification to obtain a material entity for potential use as an input during an investigation.'; 
+dadefinition= char(didefinition);
+ATTRIBUTE='definition';
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+didefinition= 'http://purl.obolibrary.org/obo/OBI_0000684'; 
+dadefinition= char(didefinition);
+ATTRIBUTE='imported from';
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+
 
 % Add vendor to group
 phenotype=array_of_do_fits(1,j).phenotype;

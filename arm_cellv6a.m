@@ -15,7 +15,7 @@ j=k_adult_male(i,1);
 newFolder=pathsavedata;
 genpath('newFolder');
 cd(newFolder);
-namenew=strcat('specimen_#',num2str(m),'.h5');
+namenew=strcat('sensory_cell_#',num2str(m),'.h5');
 fileID = H5F.open(namenew,'H5F_ACC_RDWR','H5P_DEFAULT');
 newFolder=pathfunctions;
 genpath('newFolder');
@@ -45,14 +45,25 @@ ATTRIBUTE      = 'imported_from';
 description=  'http://purl.obolibrary.org/obo/CL_0000601';
 dadefinition= char(description);
 write_attribute_for_group(group_id_2a,dadefinition,ATTRIBUTE);
-
+group_id_2a2 = H5G.create(fileID, 'cell/outer hair cell/image', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+ 
+ didefinition= 'An image is an affine projection to a two dimensional surface, of measurements of some quality of an entity or entities repeated at regular intervals across a spatial range, where the measurements are represented as color and luminosity on the projected on surface.'
+ dadefinition= char(didefinition);
+ ATTRIBUTE      = 'definition';
+ write_attribute_for_group(group_id_2a2,dadefinition,ATTRIBUTE);
+ 
+ 
+ATTRIBUTE      = 'imported_from';
+description=  'http://purl.obolibrary.org/obo/IAO_0000101';
+dadefinition= char(description);
+write_attribute_for_group(group_id_2a2,dadefinition,ATTRIBUTE);
 % Create and write image dataset only do this once so no need for
 % additional functions keep code here
 image_outer_hair_cell=array_of_do_fits(1,j).cfnimage; %grab image data from file
 dim_i=size(image_outer_hair_cell);
 dim0=3;
 space = H5S.create_simple(dim0, fliplr(dim_i), []);
-DATASETID = H5D.create(group_id_2a, 'image_outer_hair_cell', 'H5T_STD_B8BE', space, 'H5P_DEFAULT');
+DATASETID = H5D.create(group_id_2a2, 'image_outer_hair_cell', 'H5T_STD_B8BE', space, 'H5P_DEFAULT');
 H5D.write(DATASETID,'H5T_NATIVE_B8','H5S_ALL','H5S_ALL','H5P_DEFAULT',image_outer_hair_cell); %write dataset
 % add attributes
 researcher=array_of_do_fits(1,j).researcher;
@@ -90,19 +101,19 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
 % %
 % % create third layer
-group_id_3a = H5G.create(fileID, 'cell/outer hair cell/cell morphology', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_3a = H5G.create(fileID, 'cell/outer hair cell/morphology', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 
 
 ATTRIBUTE      = 'definition';
-didefinition= 'The morphology of a cell'; 
+didefinition= 'A quality of a single physical entity inhering in the bearer by virtue of the bearers size or shape or structure'; 
 dadefinition= char(didefinition);
 write_attribute_for_group(group_id_3a,dadefinition,ATTRIBUTE);
 ATTRIBUTE      = 'imported from';
-didefinition= 'http://purl.obolibrary.org/obo/OBA_1001065'; 
+didefinition= 'http://purl.obolibrary.org/obo/PATO_0000051'; 
 dadefinition= char(didefinition);
 write_attribute_for_group(group_id_3a,dadefinition,ATTRIBUTE);
 
-group_id_3c = H5G.create(fileID, 'cell/outer hair cell/cell morphology/measurement datum', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_3c = H5G.create(fileID, 'cell/outer hair cell/morphology/measurement datum', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 ATTRIBUTE      = 'definition';
 didefinition= 'A measurement datum is an information content entity that is a recording of the output of a measurement such as produced by a device'; 
 dadefinition= char(didefinition);
@@ -112,7 +123,7 @@ didefinition= 'http://purl.obolibrary.org/obo/IAO_0000109';
 dadefinition= char(didefinition);
 write_attribute_for_group(group_id_3c,dadefinition,ATTRIBUTE);
 
-group_id_3b = H5G.create(fileID, 'cell/outer hair cell/cell morphology/predicted data item', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_3b = H5G.create(fileID, 'cell/outer hair cell/morphology/predicted data item', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 ATTRIBUTE      = 'definition';
 didefinition= 'A data item that was generated on the basis of a calculation or logical reasoning'; 
 dadefinition= char(didefinition);
