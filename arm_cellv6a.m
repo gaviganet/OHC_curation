@@ -47,7 +47,7 @@ dadefinition= char(description);
 write_attribute_for_group(group_id_2a,dadefinition,ATTRIBUTE);
 group_id_2a2 = H5G.create(fileID, 'cell/outer hair cell/image', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
  
- didefinition= 'An image is an affine projection to a two dimensional surface, of measurements of some quality of an entity or entities repeated at regular intervals across a spatial range, where the measurements are represented as color and luminosity on the projected on surface.'
+ didefinition= 'An image is an affine projection to a two dimensional surface, of measurements of some quality of an entity or entities repeated at regular intervals across a spatial range, where the measurements are represented as color and luminosity on the projected on surface.';
  dadefinition= char(didefinition);
  ATTRIBUTE      = 'definition';
  write_attribute_for_group(group_id_2a2,dadefinition,ATTRIBUTE);
