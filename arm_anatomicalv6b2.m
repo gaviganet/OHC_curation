@@ -140,7 +140,7 @@ DATASETID=create_and_write_int_dataset(group_id_2k,space,type,name_def,cochlear_
 % %add attributes
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); 
 ATTRIBUTE      = 'definition';
-description= 'Positional quality along the apical-basal axis that corresponds to whole circular sections of the cochlea.  Positional origin of cell used. '; 
+description= 'Positional quality along the apical-basal axis that corresponds to whole circular sections of the cochlea.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 ATTRIBUTE      = 'allowed values';
