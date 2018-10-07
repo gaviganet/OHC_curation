@@ -12,9 +12,9 @@ function curation_7()
 
 % arm_organismv8a(dirname,filename_fits,k_adult_male,count); 
 % arm_devicev6a(dirname,filename_fits,k_adult_male,count);
-% arm_anatomicalv6a(dirname,filename_fits,k_adult_male,count); 
+% arm_anatomicalv6b2(dirname,filename_fits,k_adult_male,count); 
 % arm_cellv6a(dirname, filename_fits,k_adult_male,count); 
-% arm_assayv11a(dirname,filename_fits,k_adult_male,count) 
+% arm_assayv11a2(dirname,filename_fits,k_adult_male,count) 
 % arm_data_transformation.m(dirname,filename_fits,k_adult_male,count) 
 
 % dirname: is the path where the MATLAB
