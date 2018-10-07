@@ -1191,12 +1191,17 @@ ATTRIBUTE      = 'imported from';
 description= 'http://bhi.washington.edu/OPB#OPB_00318'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-
 ATTRIBUTE      = 'units';
 description= 'pA'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
+fnDC_TC=array_of_do_fits(1,j).fname_DC_TC;
+ ATTRIBUTE      = 'filename of saved IvsV data with interval time between points';
+ description_two={fnDC_TC};
+ dadefinition= char(description_two);
+ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+% 
 end
 group_id_7a= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/intracellular electrophysiology stimulus', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 didefinition= 'The electrical protocol (e.g. pulse, ramp) used during a intracellular electrophysiology recording. ';
