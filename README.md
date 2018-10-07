@@ -8,12 +8,12 @@ To examine the data in MATLAB use BACKFLOW_script.m to create a Table and give i
 
       (1A) The main M script file is curationv7.m.  
       
-      (1B) This script calls 5 different functions that represent five arms of the curated data-set. These files are:
+      (1B) This script calls 6 different functions that represent five arms of the curated data-set. These files are:
             arm_organismv8a.m
-            arm_anatomicalv6b.m
+            arm_anatomicalv6b2.m
             arm_devicev6a.m
             arm_cellv6a.m
-            arm_assayv11a.m
+            arm_assayv11a2.m
             arm_data_transformation.m
             
       (1C) Each of the six (6) different functions calls another seven (7) functions
