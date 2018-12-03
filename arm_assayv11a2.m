@@ -247,14 +247,14 @@ ATTRIBUTE      = 'definition';
 %description= 'frequency is a physical quality which inheres in a bearer by virtue of the number of the bearers repetitive actions in a particular time. In this case it is the low and high frequency of the sine waves used to stimulate the cell and measure the admittance';
 description= 'It is a physical quality of a process inhering in a bearer by virtue of the size of the bearers maximum displacement from the normal position, when periodic motion is taking place'; 
 dadefinition= char(description);
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 ATTRIBUTE      = 'imported from';
 description= 'http://purl.obolibrary.org/obo/PATO_0000080'; 
 dadefinition= char(description);
 ATTRIBUTE      = 'definition for experiment';
 description= 'The amplitude of the AC dual sine stimulus';
 dadefinition= char(description);
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 % 
 ATTRIBUTE      = 'units';
 description= 'volts';
@@ -262,11 +262,11 @@ dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
 switch array_of_do_fits(1,j).freql
-    case 781.250;
+    case 781.250
         tnumber=512;
-    case 390.625;
+    case 390.625
         tnumber=1024;
-    case 195.3125;
+    case 195.3125
          tnumber=2048;
 end
 % 
@@ -301,7 +301,7 @@ dadefinition= char(didefinition);
 ATTRIBUTE      = 'imported from';
 write_attribute_for_group(group_id_5,dadefinition,ATTRIBUTE)
  group_id_5z= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/chemical solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-didefinition= 'A material entity that is made up of at least 2 scattered molecular aggregates, one playing the role of solvent and the other one playing the role of solute.'
+didefinition= 'A material entity that is made up of at least 2 scattered molecular aggregates, one playing the role of solvent and the other one playing the role of solute.';
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5z,dadefinition,ATTRIBUTE)
@@ -977,7 +977,7 @@ DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Measure of the amount of electric charge stored (or separated) by the cellular membrane for a given electric potential.' 
+description= 'Measure of the amount of electric charge stored (or separated) by the cellular membrane for a given electric potential.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';

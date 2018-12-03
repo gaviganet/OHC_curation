@@ -114,7 +114,7 @@ arm_anatomicalv6b2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathb
 arm_assayv11a2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 transformed_data_set(dirname,filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_cellv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
-%%
+%
 % % Get second file
 clear;
 pathbegdata='Y:\OHC_Data\Data for portal\male prepubertal';
@@ -128,7 +128,6 @@ end
  
 k_prepub_male=find(m);
 k_prepub_male=k_prepub_male';
-clear array_of_do_fits m;
 pathfunctions='C:\Users\bfarrell\Box Sync\Documents (bfarrell@bcm.edu)\M files\OHC analysis\HDF5format\final functions\Package';
 newFolder=pathfunctions;
 cd(newFolder);
@@ -145,6 +144,7 @@ arm_assayv11a2(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegd
 transformed_data_set(dirname,filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_cellv6a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 %
+% % Get third file
 clear;
 pathbegdata='Y:\OHC_Data\Data for portal\female prepubertal';
 newFolder=pathbegdata;
@@ -168,13 +168,13 @@ filename_fits='R1_prepubfemale_mat2hdf5_out.mat';
 count =60;
 arm_organismv8a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
-arm_anatomicalv6b2(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
+arm_anatomicalv6b2(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_assayv11a2(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 transformed_data_set(dirname,filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_cellv6a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
-
 %
-clear;
+% % Get fourth file
+clear; 
 pathbegdata='Y:\OHC_Data\Data for portal\female adult mid-estrous';
 newFolder=pathbegdata;
 cd(newFolder);
@@ -194,7 +194,6 @@ pathsavedata='Y:\OHC_Data\Data for portal\Specimen\';
 C={'female','adult','mid-estrous'};
 dirname=strjoin(C);
 filename_fits='R1_midestrousfemale_mat2hdf5_out.mat';
-
 count =88;
 arm_organismv8a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
@@ -202,7 +201,5 @@ arm_anatomicalv6b2(dirname, filename_fits,k_adult_female,count,pathfunctions,pat
 arm_assayv11a2(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
 transformed_data_set(dirname,filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_cellv6a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
-
-
 end
 % 
