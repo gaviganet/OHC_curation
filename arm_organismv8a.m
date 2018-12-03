@@ -199,7 +199,6 @@ dadefinition= char(didefinition);
 ATTRIBUTE='allowed values';
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 % 
- 
 % estrous
 estrous_cycle_phase=array_of_do_fits(1,j).estrous;
 if(strcmp(estrous_cycle_phase,'NA')==1)
