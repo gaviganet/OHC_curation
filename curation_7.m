@@ -108,11 +108,11 @@ filename_fits='R1_adultmale_mat2hdf5_out.mat';  %This is my updated file
 count =0;
 %
 arm_organismv8a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
- arm_devicev6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
- arm_anatomicalv6b2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
+arm_devicev6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
+arm_anatomicalv6b2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_assayv11a2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
- arm_data_transformation(dirname,filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
- arm_cellv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
+transformed_data_set(dirname,filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
+arm_cellv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 %%
 % % Get second file
 clear;

@@ -149,7 +149,7 @@ name_def='cell_surface_area';
 DATASETID=create_and_write_double_dataset(group_id_3b,space,type,name_def,area);
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'surface area of  outer hair cell excluding stereocilia'; 
+description= 'surface area of outer hair cell excluding stereocilia'; 
 at_definition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,at_definition)
 ATTRIBUTE      = 'label imported from';
@@ -160,7 +160,7 @@ ATTRIBUTE      = 'units';
 description= 'micronmeter x micronmeter';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'predicted data item';
+ATTRIBUTE      = 'editor note';
 description= 'calculated from the measured outer hair cell diameter and measured outer hair cell lateral wall length'; 
 at_definition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,at_definition)

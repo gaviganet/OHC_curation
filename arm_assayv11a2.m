@@ -85,7 +85,7 @@ ATTRIBUTE      = 'definition';
  write_attribute_for_group(group_id_3a2,dadefinition,ATTRIBUTE);
 group_id_3a3 = H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 % 
-didefinition= 'A square wave pulse with an amplitude of 0.01 V was applied to the cell via the pipette to determine the membrane current as a function of membrane potential plot. The voltage was ramped from ?0.13 to +0.13 V in 0.01 V steps and current was sampled every 100 microseconds for a 1000 times at each voltage. The conductance was calculated from the change in the steady-state part of the measured current relative to the change in the membrane potential, and the resistance determined from the reciprocal.'; 
+didefinition= 'A square wave pulse with an amplitude of 0.01 volts was applied to the cell via the pipette to determine the membrane current as a function of membrane potential plot. The voltage was ramped from -0.13 to +0.13 volts in 0.01 volt steps and current was sampled every 100 microseconds for a 1000 times at each voltage. The conductance was calculated from the change in the steady-state part of the measured current relative to the change in the membrane potential, and the resistance determined from the reciprocal.'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
  write_attribute_for_group(group_id_3a3,dadefinition,ATTRIBUTE);
@@ -151,13 +151,10 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 % 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  group_id_4a = H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/intracellular electrophysiology stimulus', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-didefinition= 'bla bla';
-dadefinition= char(didefinition);
- ATTRIBUTE      = 'definition';
- write_attribute_for_group(group_id_4a,dadefinition,ATTRIBUTE);
+
 didefinition= 'The electrical protocol (e.g. pulse, ramp) used during a intracellular electrophysiology recording';
 dadefinition= char(didefinition);
-ATTRIBUTE      = 'note';
+ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_4a,dadefinition,ATTRIBUTE);
 
 % % creaate data sets
@@ -217,13 +214,15 @@ DATASETID=create_write_array_of_dble_dset(group_id_4a,space,type,dim0,dimw,name_
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
-%description= 'frequency is a physical quality which inheres in a bearer by virtue of the number of the bearers repetitive actions in a particular time. In this case it is the low and high frequency of the sine waves used to stimulate the cell and measure the admittance';
-description= 'The two frequencies, f1 and f2 (where f2 = 2 X f1) of the AC voltage sine waves used to stimulate the cell and measure the admittance';
-
+description= 'physical quality which inheres in a bearer by virtue of the number of the bearers repetitive actions in a particular time.' ;
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'label imported from';
+ATTRIBUTE      = 'imported from';
 description= ' http://purl.obolibrary.org/obo/PATO_0000044'; 
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'definition for experiment';
+description= 'The two frequencies, f1 and f2 (where f2 = 2 X f1) of the AC voltage sine waves used to stimulate the cell and measure the admittance';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
@@ -244,14 +243,16 @@ name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_4a,space,type,dim0,dimw,name_def,amp); %calls function
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-
 ATTRIBUTE      = 'definition';
 %description= 'frequency is a physical quality which inheres in a bearer by virtue of the number of the bearers repetitive actions in a particular time. In this case it is the low and high frequency of the sine waves used to stimulate the cell and measure the admittance';
-description= 'The amplitude of the AC dual sine stimulus; where it is a physical quality of a process inhering in a bearer by virtue of the size of the bearers maximum displacement from the normal position, when periodic motion is taking place'; 
+description= 'It is a physical quality of a process inhering in a bearer by virtue of the size of the bearers maximum displacement from the normal position, when periodic motion is taking place'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'label imported from';
+ATTRIBUTE      = 'imported from';
 description= 'http://purl.obolibrary.org/obo/PATO_0000080'; 
+dadefinition= char(description);
+ATTRIBUTE      = 'definition for experiment';
+description= 'The amplitude of the AC dual sine stimulus';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
@@ -299,24 +300,29 @@ didefinition= 'http://purl.obolibrary.org/obo/OBI_0000785';
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'imported from';
 write_attribute_for_group(group_id_5,dadefinition,ATTRIBUTE)
- group_id_5z= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-didefinition= 'bla bla'; 
+ group_id_5z= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/chemical solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+didefinition= 'A material entity that is made up of at least 2 scattered molecular aggregates, one playing the role of solvent and the other one playing the role of solute.'
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5z,dadefinition,ATTRIBUTE)
+didefinition= 'http://purl.obolibrary.org/obo/OBI_0302729';
+dadefinition= char(didefinition);
+ATTRIBUTE      = 'imported from';
+write_attribute_for_group(group_id_5z,dadefinition,ATTRIBUTE)
 
- group_id_5c= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/solution/extracellular solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+ group_id_5c= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/chemical solution/extracellular solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 didefinition= 'solution used to bathe cells'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5c,dadefinition,ATTRIBUTE)
 
-group_id_5d= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/solution/extracellular solution/concentration', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-didefinition= 'bla bla'; 
+group_id_5d= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/chemical solution/extracellular solution/concentration', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+didefinition= 'The quantity of a substance per unit volume or weight; a measure of the amount of substance present in a unit amount of mixture, particularly, the amount of solute dissolved in a solvent. The amounts can be expressed as moles, masses, volumes, or parts.'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5d,dadefinition,ATTRIBUTE)
-didefinition= 'http://purl.obolibrary.org/obo/CHMO_0002820'; 
+didefinition= ' http://purl.obolibrary.org/obo/NCIT_C41185';
+
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'imported from';
 write_attribute_for_group(group_id_5d,dadefinition,ATTRIBUTE)
@@ -558,23 +564,23 @@ dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-group_id_5e= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/solution/solution in pipette', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_5e= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/chemical solution/solution in pipette', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 % 
 didefinition= 'solution placed within the patch pipette'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5e,dadefinition,ATTRIBUTE)
 
-group_id_5f= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/solution/solution in pipette/concentration', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_5f= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/electrical admittance dual-sine stimulus/chemical solution/solution in pipette/concentration', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 % 
-didefinition= 'bla bla'; 
+didefinition= 'The quantity of a substance per unit volume or weight; a measure of the amount of substance present in a unit amount of mixture, particularly, the amount of solute dissolved in a solvent. The amounts can be expressed as moles, masses, volumes, or parts. [def-source: NCI]';
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5f,dadefinition,ATTRIBUTE)
-didefinition= 'http://purl.obolibrary.org/obo/CHMO_0002820'; 
+didefinition= ' http://purl.obolibrary.org/obo/NCIT_C41185'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'imported from';
-write_attribute_for_group(group_id_5f,dadefinition,ATTRIBUTE)
+write_attribute_for_group(group_id_5f,dadefinition,ATTRIBUTE);
 
 % 
 % % create data sets 
@@ -922,7 +928,7 @@ name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_def,Rm); %calls function
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-ATTRIBUTE      = 'term imported from';
+ATTRIBUTE      = 'imported from';
 description= 'http://purl.org/incf/ontology/Computational_Neurosciences/cno_alpha.owl#cno_0000221';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
@@ -931,13 +937,13 @@ ATTRIBUTE      = 'units';
 description= 'Mohm';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'predicted value';
-description= 'calculated from the admittance based upon model'; 
-dadefinition= char(description);
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
 ATTRIBUTE      = 'definition';
-description=' membrane resistance, and it is a measure of how difficult it is for current to flow through the membrane. It is the ratio of the voltage across the membrane relative to the current through the membrane.';
+description='Measure of the degree to which the cellular membrane opposes the passage of an electric current.'; 
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'definition two';
+description='It is the ratio of the voltage across the membrane relative to the current through the membrane.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
@@ -952,10 +958,9 @@ DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 % 
 ATTRIBUTE      = 'definition';
-description='series resistance, and it is a measure of how difficult it is for current to flow through the pipette.  It is the ratio of the voltage drop across the pipette relative to the current flow through the pipette.';
+description='access resistance, and it is a measure of how difficult it is for current to flow through the pipette.  It is the ratio of the voltage drop across the pipette relative to the current flow through the pipette.';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-
 % 
 ATTRIBUTE      = 'units';
 description= 'Mohm';
@@ -972,7 +977,7 @@ DATASETID=create_write_array_of_dble_dset(group_id_6a,space,type,dim0,dimw,name_
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Membrane capacitance: ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
+description= 'Measure of the amount of electric charge stored (or separated) by the cellular membrane for a given electric potential.' 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
@@ -980,7 +985,7 @@ description= 'pF';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-ATTRIBUTE      = 'label imported from';
+ATTRIBUTE      = 'imported from';
 description= 'http://purl.org/incf/ontology/Computational_Neurosciences/cno_alpha.owl#cno_0000220';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
@@ -1002,7 +1007,7 @@ name_def= char(didefinition);
 % 
 % attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-description= 'Membrane capacitance: ratio of the change in electric charge stored by the membrane relative to the change in electric potential across the membrane.'; 
+description= 'Measure of the amount of electric charge stored (or separated) by the cellular membrane for a given electric potential.' ;
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 % 
@@ -1015,7 +1020,7 @@ ATTRIBUTE      = 'note';
 description= 'determined at f2 the higher frequency';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'label imported from';
+ATTRIBUTE      = 'imported from';
 description= 'http://purl.org/incf/ontology/Computational_Neurosciences/cno_alpha.owl#cno_0000220';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
@@ -1035,14 +1040,18 @@ ATTRIBUTE      = 'units';
 description= 'degrees centigrade';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'definition';
-description= 'temperature that assay was conducted at';
+ATTRIBUTE      = 'note';
+description= 'temperature that assay was conducted';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-% ATTRIBUTE      = 'imported from';
-% description= 'http://purl.obolibrary.org/obo/PATO_0000146'; 
-% dadefinition= char(description);
-% specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+ATTRIBUTE      = 'definition';
+description= 'A physical quality of the thermal energy of a system.';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'imported from';
+description= 'http://purl.obolibrary.org/obo/PATO_0000146'; 
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 
 
 pressure=array_of_do_fits(1,j).pressure;
@@ -1060,11 +1069,6 @@ specific_string_attribute(DATASETIDP,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'definition';
 %description= 'pressure is a physical quality that inheres in a bearer by virtue of the bearers amount of force per unit area it exerts. In this case it is pressure at the pipette';
 description= 'pressure at the patch pipette';
-
-dadefinition= char(description);
-specific_string_attribute(DATASETIDP,ATTRIBUTE,dadefinition)
-ATTRIBUTE      = 'label for pressure imported from';
-description= 'http://purl.obolibrary.org/obo/PATO_0001025'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETIDP,ATTRIBUTE,dadefinition)
 % 
@@ -1082,7 +1086,11 @@ name_def= char(didefinition);
 DATASETID=create_and_write_string_dataset(group_id_3a3,space,type,name_def,time_of_DC_experiment);
 
 ATTRIBUTE      = 'definition';
-description= 'bla bla'; 
+description= 'A start time is a time instant pertaining to the time at which a process begins. In this case it is the time that the specific assay begins.'; 
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
+ATTRIBUTE      = 'imported from';
+description= ' http://semanticscience.org/resource/SIO_000669'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 end
@@ -1110,13 +1118,17 @@ write_attribute_for_group(group_id_7a,dadefinition,ATTRIBUTE)
  lapl_id = 'H5P_DEFAULT';
  H5L.create_hard(group_id_5,'temperature',group_id_7a,'temperature', lcpl_id,lapl_id)
  H5L.create_hard(group_id_5,'pipette_pressure',group_id_7a,'pipette_pressure', lcpl_id,lapl_id)
-group_id_5y= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-didefinition= 'bla bla'; 
+group_id_5y= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/chemical solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+didefinition= 'A material entity that is homogeneous, made up of at least two scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5y,dadefinition,ATTRIBUTE)
+ATTRIBUTE      = 'imported from';
+didefinition= 'http://purl.obolibrary.org/obo/OBI_0302729';
+dadefinition= char(didefinition);
+write_attribute_for_group(group_id_5y,dadefinition,ATTRIBUTE)
 
- group_id_5x= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/solution/extracellular solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+ group_id_5x= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/chemical solution/extracellular solution', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 didefinition= 'solution used to bathe cells'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
@@ -1126,12 +1138,12 @@ write_attribute_for_group(group_id_5x,dadefinition,ATTRIBUTE)
  H5L.create_hard(group_id_5c,'pH_ext',group_id_5x,'pH_ext', lcpl_id,lapl_id)
  H5L.create_hard(group_id_5c,'osmolality_ext',group_id_5x,'osmolality_ext', lcpl_id,lapl_id)
 
-group_id_5w= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/solution/extracellular solution/concentration', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-didefinition= 'bla bla'; 
+group_id_5w= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/chemical solution/extracellular solution/concentration', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+didefinition= 'The quantity of a substance per unit volume or weight; a measure of the amount of substance present in a unit amount of mixture, particularly, the amount of solute dissolved in a solvent. The amounts can be expressed as moles, masses, volumes, or parts';
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5w,dadefinition,ATTRIBUTE)
-didefinition= 'http://purl.obolibrary.org/obo/CHMO_0002820'; 
+didefinition= 'http://purl.obolibrary.org/obo/NCIT_C41185'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'imported from';
 write_attribute_for_group(group_id_5w,dadefinition,ATTRIBUTE)
@@ -1143,7 +1155,7 @@ H5L.create_hard(group_id_5d,'MgCl2',group_id_5w,'MgCl2', lcpl_id,lapl_id);
 H5L.create_hard(group_id_5d,'NaCl',group_id_5w,'NaCl', lcpl_id,lapl_id);  
 H5L.create_hard(group_id_5d,'Xe991',group_id_5w,'Xe991', lcpl_id,lapl_id);  
 H5L.create_hard(group_id_5d,'TEAC',group_id_5w,'TEAC', lcpl_id,lapl_id);  
-group_id_5v= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/solution/solution in pipette', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_5v= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/chemical solution/solution in pipette', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 % 
 didefinition= 'solution placed within the patch pipette'; 
 dadefinition= char(didefinition);
@@ -1152,13 +1164,13 @@ write_attribute_for_group(group_id_5v,dadefinition,ATTRIBUTE)
 H5L.create_hard(group_id_5e,'pH_int',group_id_5v,'pH_int', lcpl_id,lapl_id)
 H5L.create_hard(group_id_5e,'osmolality_int',group_id_5v,'osmolality_int', lcpl_id,lapl_id);
  
-group_id_5u= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/solution/solution in pipette/concentration', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_5u= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/chemical solution/solution in pipette/concentration', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 % 
-didefinition= 'bla bla'; 
+didefinition= 'The quantity of a substance per unit volume or weight; a measure of the amount of substance present in a unit amount of mixture, particularly, the amount of solute dissolved in a solvent. The amounts can be expressed as moles, masses, volumes, or parts';
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'definition';
 write_attribute_for_group(group_id_5u,dadefinition,ATTRIBUTE)
-didefinition= 'http://purl.obolibrary.org/obo/CHMO_0002820'; 
+didefinition= 'http://purl.obolibrary.org/obo/NCIT_C41185'; 
 dadefinition= char(didefinition);
 ATTRIBUTE      = 'imported from';
 write_attribute_for_group(group_id_5u,dadefinition,ATTRIBUTE)
@@ -1224,7 +1236,15 @@ didefinition= 'membrane_potential';
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_7a,space,type,dim0,dimw,name_def,V_hold);  %calls function
 ATTRIBUTE      = 'definition';
-description= 'DC voltage clamp potential'; 
+description= 'A quality inhering in a cells plasma membrane by virtue of the electrical potential difference across it.';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'definition and label imported from';
+description= 'http://purl.obolibrary.org/obo/PATO_0001462';
+dadefinition= char(description);
+specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+ATTRIBUTE      = 'definition two';
+description= 'The DC electric potential applied to the cytoplasm of the cell where the potential outside the cell is defined as zero.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 ATTRIBUTE      = 'units';
