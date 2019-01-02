@@ -3,8 +3,8 @@
 % data. This script is interactive and requires input from the reader.  There are 6 sections.   This requires
 % some training till one becomes familiar with the needs of the code. This
 % code requires the array_of_hdf52mat_out. 
-% File was updated by Brenda Farrell in December 14 2017. 
-% Some of the interactive components were originally written by Varun Sreenivasan.
+% File was updated by Brenda Farrell in January 2 2019. 
+% Some of the interactive components were originally written by Varun Sreenivasan, PhD.
 %% Section one
 % Load data as an array of structs into memory.  The data loaded is the
 % data generated from translating HDF5 to MATLAB this can have 1 to 89
@@ -23,38 +23,38 @@ cd(pathfunctions)
 % interactively pick the voltage at maximum capacitance.  Useful to look at
 % plots to establish the linear and non-linear regions.
 close all;
-k=1; %Pick the specimen value you want to examine
+k=11; %Pick the specimen value you want to examine
 
 originalCellNumber=array_of_hdf52mat_out(1,k).originalCellNumber;
-phenotype=array_of_hdf52mat_out(1,k).phenotype;
-sex=array_of_hdf52mat_out(1,k).sex;
+phenotype=array_of_hdf52mat_out(1,k).mammalian_phenotype;
+sex=array_of_hdf52mat_out(1,k).phenotypic_sex;
 researcher=array_of_hdf52mat_out(1,k).researcher;
 
 % values calculated and saved from the original measurements
-Cm_low_saved=array_of_hdf52mat_out(1,k).Cmlf;
-Cm_high_saved=array_of_hdf52mat_out(1,k).Cmhf;
-Rm_saved=array_of_hdf52mat_out(1,k).Rm;
-Rs_saved=array_of_hdf52mat_out(1,k).Rs;
-NLC_lf_saved=array_of_hdf52mat_out(1,k).NLC_lf;
-NLC_hf_saved=array_of_hdf52mat_out(1,k).NLC_hf;
-q_lf_saved=array_of_hdf52mat_out(1,k).q_lf;
-q_hf_saved=array_of_hdf52mat_out(1,k).q_hf;
-potential_saved=array_of_hdf52mat_out(1,k).potential;
-voltage=array_of_hdf52mat_out(1,k).voltage;
+Cm_low_saved=array_of_hdf52mat_out(1,k).membrane_capacitance_Cmf1_;
+Cm_high_saved=array_of_hdf52mat_out(1,k).membrane_capacitance_Cmf2_;
+Rm_saved=array_of_hdf52mat_out(1,k).membrane_resistance_Rm_;
+Rs_saved=array_of_hdf52mat_out(1,k).series_resistance_Rs_;
+NLC_lf_saved=array_of_hdf52mat_out(1,k).NLC_f1;
+NLC_hf_saved=array_of_hdf52mat_out(1,k).NLC_f2;
+q_lf_saved=array_of_hdf52mat_out(1,k).q_f1;
+q_hf_saved=array_of_hdf52mat_out(1,k).q_f2;
+potential_saved=array_of_hdf52mat_out(1,k).membrane_potential1;
+voltage=array_of_hdf52mat_out(1,k).membrane_potential;
 
 % key variables
-Vpeak_saved=array_of_hdf52mat_out(1,k).Vpeak;
+Vpeak_saved=array_of_hdf52mat_out(1,k).V_0p5;
 Rm_mean_saved=array_of_hdf52mat_out(1,k).Rm_mean;
 Rs_mean_saved=array_of_hdf52mat_out(1,k).Rs_mean;
-voltageDrop_saved=array_of_hdf52mat_out(1,k).voltageDrop;
-LC_hf_mean_saved=array_of_hdf52mat_out(1,k).LC_hf_mean;
-LC_lf_mean_saved=array_of_hdf52mat_out(1,k).LC_lf_mean;
-NLC_hf_peak_saved=array_of_hdf52mat_out(1,k).NLC_hf_peak;
-NLC_lf_peak_saved=array_of_hdf52mat_out(1,k).NLC_lf_peak;
-Q_hf_saved=array_of_hdf52mat_out(1,k).Q_hf;
-Q_lf_saved=array_of_hdf52mat_out(1,k).Q_lf;
-VSmax_hf_saved=array_of_hdf52mat_out(1,k).VSmax_hf;
-VSmax_lf_saved=array_of_hdf52mat_out(1,k).VSmax_lf;
+voltageDrop_saved=array_of_hdf52mat_out(1,k).voltage_drop_across_membrane;
+LC_hf_mean_saved=array_of_hdf52mat_out(1,k).LC_f2_mean;
+LC_lf_mean_saved=array_of_hdf52mat_out(1,k).LC_f1_mean;
+NLC_hf_peak_saved=array_of_hdf52mat_out(1,k).NLC_f2_peak;
+NLC_lf_peak_saved=array_of_hdf52mat_out(1,k).NLC_f1_peak;
+Q_hf_saved=array_of_hdf52mat_out(1,k).Qmax_f2;
+Q_lf_saved=array_of_hdf52mat_out(1,k).Qmax_f1;
+VS_hf_saved=array_of_hdf52mat_out(1,k).alpha_f2;
+VS_lf_saved=array_of_hdf52mat_out(1,k).alpha_f2;
 
 % Determine the extent of the ramp
 
@@ -81,6 +81,7 @@ hold on;
 
 ylim([4, max(Cm_low_saved(begR:endR,1))+1])
 plot(voltage(begR:endR,1),Cm_high_saved(begR:endR,1),'.b','markersize', 24);
+hold on;
 plot(voltage(begR:endR,1),Cm_low_saved(begR:endR,1),'.r','markersize', 24);
 legend('capacitancehigh','capacitancelow'); % add legend
 %%
@@ -257,8 +258,10 @@ Vmcorr=VD*Vm.Position(1,1);
 % Calculate the voltage sensitivity
 A_low=diff(q_lf_saved/(max(q_lf_saved))./(potential_saved(NLpositions(1,1)+3)-potential_saved(NLpositions(1,1)+2)));
 VSmax_lf=max(A_low);
+VS_lf=4*VSmax_lf;
 A_high=diff(q_hf_saved/(max(q_hf_saved))./(potential_saved(NLpositions(1,1)+3)-potential_saved(NLpositions(1,1)+2)));
 VSmax_hf=max(A_high);
+VS_hf=4*VSmax_hf;
             
 
 %% Section five
@@ -289,7 +292,7 @@ xlabel('potential, V');
 subplot(2,2,4),plot(voltage(begR+bNL-1:1:bLin-1,1),q_high(:,1),'o',potential_saved(1:1:length(q_hf_saved),1),q_hf_saved(:,1),'+'); % this is ramp voltage versus NLC_low frequency
  set(gca,'Xlim',([-0.2 0.2]),'Ylim',([0 Q_high_total]),'linewidth',1,'FontSize',12,'FontName','Helvetica','Xticklabel',{'-0.2', '-0.1','0', '0.1','0.2'},...
 'Xtick',[-0.2 -0.1 0 0.1 0.2 ],'box','off');
-legend('q_{lf}','q_{lf} saved ','Location','northoutside','Orientation','vertical')
+legend('q_{hf}','q_{hf} saved ','Location','northoutside','Orientation','vertical')
 legend('boxoff');
 ylabel('pC');
 xlabel('potential, V');  
@@ -300,8 +303,8 @@ gtext(strcat('specimen no: ',  num2str(k),' originalCellNumber: ', num2str(origi
 % re-calculated.  The user can peruse the Tout Table and compare the saved
 % with calculated for the main parameters usually reported in an
 % experiment.
-Tout=table(mean_LC_low,std_LC_low,mean_LC_high,std_LC_high,mean_Rm,std_Rm,mean_Rs,std_Rs,VD, Vpeak,Vmcorr,NLC_low_peak,NLC_high_peak,Q_low_total,Q_high_total,VSmax_lf,VSmax_hf);
-TSaved=table(LC_lf_mean_saved(1,1),LC_lf_mean_saved(2,1),LC_hf_mean_saved(1,1),LC_hf_mean_saved(2,1),Rm_mean_saved(1,1),Rm_mean_saved(2,1),Rs_mean_saved(1,1),Rs_mean_saved(2,1),voltageDrop_saved,Vpeak_saved(1,1),Vpeak_saved(2,1),NLC_lf_peak_saved,NLC_hf_peak_saved,Q_lf_saved,Q_hf_saved,VSmax_lf_saved,VSmax_hf_saved);
+Tout=table(mean_LC_low,std_LC_low,mean_LC_high,std_LC_high,mean_Rm,std_Rm,mean_Rs,std_Rs,VD, Vpeak,Vmcorr,NLC_low_peak,NLC_high_peak,Q_low_total,Q_high_total,VS_lf,VS_hf);
+TSaved=table(LC_lf_mean_saved(1,1),LC_lf_mean_saved(2,1),LC_hf_mean_saved(1,1),LC_hf_mean_saved(2,1),Rm_mean_saved(1,1),Rm_mean_saved(2,1),Rs_mean_saved(1,1),Rs_mean_saved(2,1),voltageDrop_saved,Vpeak_saved(1,1),Vpeak_saved(2,1),NLC_lf_peak_saved,NLC_hf_peak_saved,Q_lf_saved,Q_hf_saved,VS_lf_saved,VS_hf_saved);
 Tout(end+1,:) = TSaved;
 Tout.Properties.RowNames = {'Current','Saved'};
-Tout %This print the table on command line
+Tout %This prints the table on command line

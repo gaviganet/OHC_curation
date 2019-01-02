@@ -218,7 +218,7 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 VD=array_of_do_fits(1,j).VD;
 space = H5S.create('H5S_SCALAR');
 type = H5T.copy ('H5T_NATIVE_DOUBLE');
-didefinition= 'voltage_drop across membrane'; 
+didefinition= 'voltage_drop_across_membrane'; 
 name_def= char(didefinition);
 DATASETID=create_and_write_double_dataset(group_id_1y,space,type,name_def,VD);
 
