@@ -44,12 +44,12 @@ load(strcat('array_of_hdf52mat_out','.mat'));
 pathfunctions=('C:\Users\bfarrell\Box Sync\Documents (bfarrell@bcm.edu)\M files\OHC analysis\HDF5format\final functions\Package\CHECK_CELL_PARAMETERS');
 cd(pathfunctions)
 % Transfer the data into floats from structure to calculate parameters 
-k=1; % This is number of structure within array of structs you are looking at change this to look at other data
+k=89; % This is number of structure within array of structs you are looking at change this to look at other data
 % values measured during an experiment
-Imlf=array_of_hdf52mat_out(1,k).Imf1_Y__a;
-Imhf=array_of_hdf52mat_out(1,k).Imf2_Y__a;
-Relf=array_of_hdf52mat_out(1,k).Ref1_Y__a;
-Rehf=array_of_hdf52mat_out(1,k).Ref2_Y__a;
+Imlf=array_of_hdf52mat_out(1,k).imaginary_part_admittance_Imf1_Y__;
+Imhf=array_of_hdf52mat_out(1,k).imaginary_part_admittance_Imf2_Y__;
+Relf=array_of_hdf52mat_out(1,k).real_part_admittance_Ref1_Y__;
+Rehf=array_of_hdf52mat_out(1,k).real_part_admittance_Ref2_Y__;
 f_low=array_of_hdf52mat_out(1,k).frequency(1,1);
 f_high=array_of_hdf52mat_out(1,k).frequency(2,1);
 voltage=array_of_hdf52mat_out(1,k).membrane_potential;
@@ -59,10 +59,10 @@ phenotype=array_of_hdf52mat_out(1,k).mammalian_phenotype;
 sex=array_of_hdf52mat_out(1,k).phenotypic_sex;
 researcher=array_of_hdf52mat_out(1,k).researcher;
 % values calculated and saved from the original measurements
-Cm_low_saved=array_of_hdf52mat_out(1,k).Cmf1;
-Cm_high_saved=array_of_hdf52mat_out(1,k).Cmf2;
-Rs_saved=array_of_hdf52mat_out(1,k).Rs;
-Rm_saved=array_of_hdf52mat_out(1,k).Rm;
+Cm_low_saved=array_of_hdf52mat_out(1,k).membrane_capacitance_Cmf1_;
+Cm_high_saved=array_of_hdf52mat_out(1,k).membrane_capacitance_Cmf1_;
+Rs_saved=array_of_hdf52mat_out(1,k).series_resistance_Rs_;
+Rm_saved=array_of_hdf52mat_out(1,k).membrane_resistance_Rm_;
 b_saved(1:1:length(Imlf),1)=(Rs_saved(1:1:length(Imlf),1)*1E6+Rm_saved(1:1:length(Imlf),1)*1E6).^(-1);
 n=length(Imlf);
 i=1;
