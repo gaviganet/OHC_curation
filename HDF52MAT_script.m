@@ -1,6 +1,6 @@
 % This script creates two structures hdf52mat_out,
 % array_of_hdf52mat_out.  The first: structure hdf52mat_out will be used to
-% grab 83 fields of each specimen file and the second:
+% grab 84 fields of each specimen file and the second:
 % array_of_hdf52mat_out is the final collection of all the specimen data
 % (from 1 to 89 specimen files) that is translated from HDF5 to MATLAB.  N
 % is the final number of specimen files to be translated (numbered from one
@@ -11,19 +11,16 @@
 % specimen 23, 24, and 25 you will have N=3 and beg =22.
 
 % [array_of_hdf52mat_out, INFO]= HDF52MAT_v2(hdf52mat_out,array_of_hdf52mat_out, N, beg); 
-% This function
-% returns array_of_hdf52mat_out with the requested specimen files
-% translated and saved to an array of struct each with 81 fields.  It also
+% This function returns array_of_hdf52mat_out with the requested specimen files
+% translated and saved to an array of struct each with 84 fields.  It also
 % returns INFO a description of the last specimen file that is opened and
 % examined with MATLAB function: INFO = h5info(filename) returns
 % information about the entire HDF5 file specified by filename. The
 % structure is then translated to table format. 
-% HDF2MAT_v2a is the main
-% function of the program it grabs the six main attributes common to each
+% HDF2MAT_v2a is the main function of the program it grabs the six main attributes common to each
 % specimen file; the date of the recording; the original cell number, the
 % name of the researcher who collected the data, the data steward, the data curator and funding sources.  
-% It then grabs all data
-% from each dataset.  This is straight-forward as the information about
+% It then grabs all data from each dataset.  This is straight-forward as the information about
 % each HDF5 file can be retrieved by h5info(filename).   The group where
 % the datasets are found is first established and the number of datasets
 % within this group are found and then the properties of each dataset.
@@ -37,18 +34,20 @@
 % hdf2mat_out=translate_HDF5double_or_int_2_MLB(namenew,name_g,name_d,space_d,TF,TF3,TF2,hdf2mat_out,class_d);
 % It sends the filename (namenew), group name (name_g), descriptions of
 % space (space_d), type of data(class_d, e.g.,double or integer)) found
-% within dataset to the function.  It also sends the results of three
+% within dataset to the function.  It also sends the results of four
 % logical descriptors.  If TF = 0 or TF=1 then the dataset exists or does
 % not; If TF3 = 0 or TF3=1 then the space of dataset is either not empty or
 % it is empty; If TF2 =0 or TF2 =1 then the name of the dataset is
-% compatible with MATLAB rules or it is not.  It returns the structure
-% hdf52mat_out with the appropriate fields added.  We use a local function
+% compatible with MATLAB rules or it is not and if e=0 or e=1 thhen the
+% field does not exist or it does. %  It returns the structure hdf52mat_out 
+%with the appropriate fields added.  We use a local function
 % here because we are reading from a file (the h5read function) and this is
 % slow and hence we avoid the need to change directories as data files and
 % M files are stored in different directories. Once all the data is
 % translated the file adds the working specimen with all fields to the
 % array_of_hdf52mat_out and the next specimen is translated.
-% updated July 1st 2018 by Brenda Farrell
+% updated January 2nd 2019 by Brenda Farrell
+% Copyright Brenda Farrell
 clear
 hdf52mat_out=struct; % this is structure for HDF52mat
 array_of_hdf52mat_out=struct; %this is working array for all files
@@ -58,7 +57,6 @@ beg= 0;
 %
 % Create Table for visualization
 Table_of_Translated_data_Woutunits=struct2table(array_of_hdf52mat_out,'AsArray',true);
-
 % Save Array for further analysis
 pathsavedata=('Y:\OHC_Data\Data for portal\Specimen');
 genpath('pathsavedata');

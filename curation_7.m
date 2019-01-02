@@ -6,7 +6,7 @@ function curation_7()
 % used to create data; the third arm (arm_anatomicalv6b2.m) is the anatomy of
 % the organism and position where the cells where isolated; the fourth (arm_cellv6a.m) is
 % the description of the cell that was used to make the electrical
-% recording and the 5th arm (arm_assayv11a2.m) is the details of the assay that
+% recording;  the 5th arm (arm_assayv11a2.m) is the details of the assay that
 % were conducted and the 6th (transformed_data_set.m) is the details of
 % the analysis and data sets collected after performing data transformation
 % on the data.
@@ -14,9 +14,10 @@ function curation_7()
 % arm_organismv8a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 %arm_devicev6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 %arm_anatomicalv6b2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
+%arm_cellv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 %arm_assayv11a2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 %transformed_data_set(dirname,filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
-%arm_cellv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
+
 
 % dirname: is the path where the MATLAB
 % data is to be translated; filename_fits is the name of the MATLAB data
@@ -111,11 +112,12 @@ count =0;
 arm_organismv8a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 arm_anatomicalv6b2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
+arm_cellv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_assayv11a2(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata)
 transformed_data_set(dirname,filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
-arm_cellv6a(dirname, filename_fits,k_adult_male,count,pathfunctions,pathbegdata,pathsavedata);
-%
-% % Get second file
+
+% %%
+% % % Get second file
 clear;
 pathbegdata='Y:\OHC_Data\Data for portal\male prepubertal';
 newFolder=pathbegdata;
@@ -125,7 +127,6 @@ load(filename_fits);  % Just translating some of the data
 for i=1:1:length(array_of_do_fits)
           m(1,i)=i;  
 end
- 
 k_prepub_male=find(m);
 k_prepub_male=k_prepub_male';
 pathfunctions='C:\Users\bfarrell\Box Sync\Documents (bfarrell@bcm.edu)\M files\OHC analysis\HDF5format\final functions\Package';
@@ -140,9 +141,9 @@ count =39;
 arm_organismv8a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata)
 arm_anatomicalv6b2(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
+arm_cellv6a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 arm_assayv11a2(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata)
 transformed_data_set(dirname,filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
-arm_cellv6a(dirname, filename_fits,k_prepub_male,count,pathfunctions,pathbegdata,pathsavedata);
 %
 % % Get third file
 clear;
@@ -169,11 +170,12 @@ count =60;
 arm_organismv8a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_anatomicalv6b2(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
+arm_cellv6a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_assayv11a2(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata)
 transformed_data_set(dirname,filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
-arm_cellv6a(dirname, filename_fits,k_prepub_female,count,pathfunctions,pathbegdata,pathsavedata);
+
 %
-% % Get fourth file
+% % % Get fourth file
 clear; 
 pathbegdata='Y:\OHC_Data\Data for portal\female adult mid-estrous';
 newFolder=pathbegdata;
@@ -198,8 +200,8 @@ count =88;
 arm_organismv8a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_devicev6a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
 arm_anatomicalv6b2(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
+arm_cellv6a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
 arm_assayv11a2(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata)
 transformed_data_set(dirname,filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
-arm_cellv6a(dirname, filename_fits,k_adult_female,count,pathfunctions,pathbegdata,pathsavedata);
 end
-% 
+% % 

@@ -36,7 +36,7 @@ write_attribute_for_group(group_id_1c2,dadefinition,ATTRIBUTE);
 
 T=isempty(array_of_do_fits(1,j).V);
 if(T==1)
-    V_hold=  array_of_do_fits(1,j).V;
+    V_hold=  [];
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
 dimw =0;
@@ -66,7 +66,7 @@ specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
 T=isempty(array_of_do_fits(1,j).R);
 if(T==1)
- R=  array_of_do_fits(1,j).R;
+ R=  [];
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
 dimw =0;  
@@ -74,8 +74,10 @@ else
   R=  array_of_do_fits(1,j).R;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
+space
 dimw =length(R);
 end
+dim0=1;
 didefinition= 'R_b'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_1c2,space,type,dim0,dimw,name_def,R);  %calls function
@@ -94,7 +96,7 @@ if(T==1)
    I_mean=  [];
    type = H5T.copy ('H5T_NATIVE_DOUBLE');    
   space = H5S.create('H5S_SCALAR');
-  dimw =[0,0];
+  dimw =[0, 0];
 else
    I_mean=  array_of_do_fits(1,j).I_mean;
    type = H5T.copy ('H5T_NATIVE_DOUBLE');    

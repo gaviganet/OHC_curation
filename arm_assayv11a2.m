@@ -48,17 +48,6 @@ dadefinition= char(didefinition);
 ATTRIBUTE      = 'editor preferred term';
 write_attribute_for_group(group_id_2a,dadefinition,ATTRIBUTE)
 %
-% group_id_2b = H5G.create(fileID, '/assay/voltage clamp assay/patch clamp voltage clamp assay', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-% % 
-%  didefinition= 'A voltage-clamp technique which allows for the study of the electrical properties (e.g., capacitance ) of cell membranes especially the plasma membrane of cells.   In this  electrophysiology assay a patch pipette is sealed to the surface of a membrane to monitor electrical current originating at the membrane.   One key distinction of this technique is the electrical resistance of the seal between the cell membrane and the pipette is of the order 1-100 gigaohms, permitting  robust measurements  of small currents (magnitude: picoAmpere) over the area of the cell membrane probed. This area is determined by several different standard configurations. A second key distinction is the pipette is used to transfer both the electrical stimulus to the membrane, and is also used to record the generated currents at the membrane.';
-%  dadefinition= char(didefinition);
-%  ATTRIBUTE      = 'definition';
-%  write_attribute_for_group(group_id_2b,dadefinition,ATTRIBUTE)
-% 
-%  didefinition= 'OBI';
-%  dadefinition= char(didefinition);
-%  ATTRIBUTE      = 'Imported and adapted from';
-%  write_attribute_for_group(group_id_2b,dadefinition,ATTRIBUTE)
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  group_id_3a = H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
@@ -167,9 +156,7 @@ dimw =length(voltage);
 dim0=1;
 DATASETID=create_write_array_of_dble_dset(group_id_4a,space,type,dim0,dimw,name_def,voltage); %calls function
 % 
-% attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-% 
-% 
+
 ATTRIBUTE      = 'units';
 description= 'volts';
 dadefinition= char(description);
@@ -187,7 +174,6 @@ ATTRIBUTE      = 'definition two';
 description= 'The DC electric potential applied to the cytoplasm of the cell where the potential outside the cell is defined as zero.'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-
 
 switch array_of_do_fits(1,j).freql
     case 781.250;
@@ -210,8 +196,6 @@ type = H5T.copy ('H5T_NATIVE_DOUBLE');
 didefinition= 'frequency'; 
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_4a,space,type,dim0,dimw,name_def,freq); %calls function
-% 
-% attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 
 ATTRIBUTE      = 'definition';
 description= 'physical quality which inheres in a bearer by virtue of the number of the bearers repetitive actions in a particular time.' ;
@@ -242,9 +226,7 @@ didefinition= 'amplitude';
 name_def= char(didefinition);
 DATASETID=create_write_array_of_dble_dset(group_id_4a,space,type,dim0,dimw,name_def,amp); %calls function
 % 
-% attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
-%description= 'frequency is a physical quality which inheres in a bearer by virtue of the number of the bearers repetitive actions in a particular time. In this case it is the low and high frequency of the sine waves used to stimulate the cell and measure the admittance';
 description= 'It is a physical quality of a process inhering in a bearer by virtue of the size of the bearers maximum displacement from the normal position, when periodic motion is taking place'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
@@ -618,9 +600,6 @@ didefinition= 'Hepes';
 name_def= char(didefinition);
 DATASETID=create_and_write_double_dataset(group_id_5f,space,type,name_def,HEPES);
 
-% 
-% attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-% 
 ATTRIBUTE      = 'imported_from';
 description= 'http://purl.obolibrary.org/obo/CHEBI_42334'; 
 dadefinition= char(description);
@@ -670,8 +649,6 @@ end
 didefinition= 'CsGlutamate'; 
 name_def= char(didefinition);
 DATASETID=create_and_write_double_dataset(group_id_5f,space,type,name_def,Csglutamate);
-
-%attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'definition';
 description= 'cesium glutamate made by reacting glutamic acid (acid) with cesium hydroxide (base)'; 
 dadefinition= char(description);
@@ -691,7 +668,6 @@ ATTRIBUTE      = 'imported_from';
 description= 'http://purl.obolibrary.org/obo/CHEBI_86345';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-% attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
 ATTRIBUTE      = 'common chemical name';
 description= 'Magnesium chloride (MgCl2), hexahydrate';
 dadefinition= char(description);
@@ -1071,29 +1047,6 @@ ATTRIBUTE      = 'definition';
 description= 'pressure at the patch pipette';
 dadefinition= char(description);
 specific_string_attribute(DATASETIDP,ATTRIBUTE,dadefinition)
-% 
-% % time of DC  experiments
-T=isempty(array_of_do_fits(1,j).tofexp_DC);
-if(T==1)
-   
-else
-time_of_DC_experiment=array_of_do_fits(1,j).tofexp_DC;
-type = H5T.copy ('H5T_C_S1');
-space=H5S.create('H5S_SCALAR');
-didefinition= 'start time'; 
-name_def= char(didefinition);
-
-DATASETID=create_and_write_string_dataset(group_id_3a3,space,type,name_def,time_of_DC_experiment);
-
-ATTRIBUTE      = 'definition';
-description= 'A start time is a time instant pertaining to the time at which a process begins. In this case it is the time that the specific assay begins.'; 
-dadefinition= char(description);
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
-ATTRIBUTE      = 'imported from';
-description= ' http://semanticscience.org/resource/SIO_000669'; 
-dadefinition= char(description);
-specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
-end
 
 group_id_7= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/measurement datum', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 didefinition= 'A measurement datum is an information content entity that is a recording of the output of a measurement such as produced by a device.';
@@ -1184,12 +1137,14 @@ H5L.create_hard(group_id_5f,'MgCl2',group_id_5u,'MgCl2', lcpl_id,lapl_id);
 
 T=isempty(array_of_do_fits(1,j).Current_DC);
 if(T==1)
-
+current=  [];
+  dimw =0;
 else
 current=array_of_do_fits(1,j).Current_DC;
+dimw =length(current);
+end
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
-dimw =length(current);
 dim0=1;
 didefinition= 'current';
 name_def= char(didefinition);
@@ -1208,33 +1163,35 @@ description= 'pA';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 
-fnDC_TC=array_of_do_fits(1,j).fname_DC_TC;
- ATTRIBUTE      = 'filename of saved IvsV data with interval time between points';
- description_two={fnDC_TC};
- dadefinition= char(description_two);
- specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
+% fnDC_TC=array_of_do_fits(1,j).fname_DC_TC;
+%  ATTRIBUTE      = 'filename of saved IvsV data with interval time between points';
+%  description_two={fnDC_TC};
+%  dadefinition= description_two;
+%  specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
 % 
-end
-group_id_7a= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/intracellular electrophysiology stimulus', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+
+group_id_7b= H5G.create(fileID, '/assay/voltage clamp assay/whole-cell patch clamp voltage clamp assay/membrane current (I) as a function of membrane potential (V) (I vs V plot)/intracellular electrophysiology stimulus', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 didefinition= 'The electrical protocol (e.g. pulse, ramp) used during a intracellular electrophysiology recording. ';
 dadefinition= char(didefinition);
  ATTRIBUTE      = 'definition';
- write_attribute_for_group(group_id_7a,dadefinition,ATTRIBUTE);
-
-
+ write_attribute_for_group(group_id_7b,dadefinition,ATTRIBUTE);
 %
-T=isempty(array_of_do_fits(1,j).V);
+T=isempty(array_of_do_fits(1,j).voltage_DC);
 if(T==1)
+    V_hold=[];
+    type = H5T.copy ('H5T_NATIVE_DOUBLE');    
+space = H5S.create('H5S_SCALAR');
+dimw =0;
 else
- V_hold=  array_of_do_fits(1,j).V;
-
+V_hold=  array_of_do_fits(1,j).voltage_DC;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
 dimw =length(V_hold);
+end
 dim0=1;
-didefinition= 'membrane_potential'; 
+didefinition= 'membrane_potential';
 name_def= char(didefinition);
-DATASETID=create_write_array_of_dble_dset(group_id_7a,space,type,dim0,dimw,name_def,V_hold);  %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_7b,space,type,dim0,dimw,name_def,V_hold);  %calls function
 ATTRIBUTE      = 'definition';
 description= 'A quality inhering in a cells plasma membrane by virtue of the electrical potential difference across it.';
 dadefinition= char(description);
@@ -1251,20 +1208,25 @@ ATTRIBUTE      = 'units';
 description= 'volts'; 
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-end
+
 % add DC datasets
 T=isempty(array_of_do_fits(1,j).delta_time);
 if(T==1)
- 
+ delta_time=  [];
+   type = H5T.copy ('H5T_NATIVE_DOUBLE');    
+  space = H5S.create('H5S_SCALAR');
+  dimw =0;
 else
 delta_time=  array_of_do_fits(1,j).delta_time;
 type = H5T.copy ('H5T_NATIVE_DOUBLE');    
 space = H5S.create('H5S_SCALAR');
-dim0=1;
 dimw =length(delta_time);
+end 
+dim0=1;
+
 didefinition= 'time'; 
 name_def= char(didefinition);
-DATASETID=create_write_array_of_dble_dset(group_id_7a,space,type,dim0,dimw,name_def,delta_time);  %calls function
+DATASETID=create_write_array_of_dble_dset(group_id_7b,space,type,dim0,dimw,name_def,delta_time);  %calls function
 ATTRIBUTE      = 'definition';
 description= 'time that each data point was recorded relative to start of the stimulus'; 
 dadefinition= char(description);
@@ -1273,8 +1235,8 @@ ATTRIBUTE      = 'units';
 description= 'seconds';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition)
-end
+
 clearvars -except dirname filename_fits count k_adult_male array_of_do_fits pathfunctions pathbegdata pathsavedata;
 
-end
+
 end
