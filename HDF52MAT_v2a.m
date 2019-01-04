@@ -83,12 +83,12 @@ e=isfield(hdf52mat_out,name_d);
  end
 % % % % % % grab data from anatomical arm 
 for j=1:1:2
- name_g=INFO.Groups(1).Groups(1).Groups(j).Name;
- numb=length(INFO.Groups(1).Groups(1).Groups(j).Datasets);
+ name_g=INFO.Groups(1).Groups(j).Name;
+ numb=length(INFO.Groups(1).Groups(j).Datasets);
  for k=1:1:numb
- name_d=INFO.Groups(1).Groups(1).Groups(j).Datasets(k).Name;
- class_d=INFO.Groups(1).Groups(1).Groups(j).Datasets(k).Datatype.Class;
- space_d=INFO.Groups(1).Groups(1).Groups(j).Datasets(k).Dataspace.Size;
+ name_d=INFO.Groups(1).Groups(j).Datasets(k).Name;
+ class_d=INFO.Groups(1).Groups(j).Datasets(k).Datatype.Class;
+ space_d=INFO.Groups(1).Groups(j).Datasets(k).Dataspace.Size;
  TF= isempty(h5read(namenew,strcat(name_g,'/',name_d)));
  TF3=isempty(space_d);
  TF2=isvarname(name_d);
@@ -104,6 +104,24 @@ for j=1:1:2
  end 
  end
 end
+name_g=INFO.Groups(1).Groups(2).Groups(1).Name;
+name_d=INFO.Groups(1).Groups(2).Groups(1).Datasets(1).Name;
+class_d=INFO.Groups(1).Groups(2).Groups(1).Datasets(1).Datatype.Class;
+space_d=INFO.Groups(1).Groups(2).Groups(1).Datasets(1).Dataspace.Size;
+TF= isempty(h5read(namenew,strcat(name_g,'/',name_d)));
+TF3=isempty(space_d);
+TF2=isvarname(name_d);
+e=isfield(hdf52mat_out,name_d);
+% % 
+ switch(class_d)
+ case'H5T_INTEGER'
+     hdf52mat_out=translate_HDF5double_or_int_2_MLB(namenew,name_g,name_d,space_d,TF,TF3,TF2,hdf52mat_out,class_d,N,e);
+ case'H5T_STRING'
+     temp_st=h5read(namenew,strcat(name_g,'/',name_d));
+     data2(1,1)=cellstr(temp_st);
+     hdf52mat_out=setfield(hdf52mat_out,name_d,data2(1,1));
+ end 
+ 
 % % % % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % % % % grab data from cell arm 
 for j=1:1:2
@@ -309,7 +327,7 @@ for j=1:3
     data2(1,1)=cellstr(temp_st);
     name_d_corr=   matlab.lang.makeValidName(name_d);
     hdf52mat_out=setfield(hdf52mat_out,name_d_corr,data2(1,1));
-    case'H5T_FLOAT'       
+    case'H5T_FLOAT'   
     hdf52mat_out=translate_HDF5double_or_int_2_MLB(namenew,name_g,name_d,space_d,TF,TF3,TF2,hdf52mat_out,class_d, N, e);
    end
  end 
