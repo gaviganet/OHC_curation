@@ -73,24 +73,16 @@ write_attribute_for_group(group_id_1e2,dadefinition,ATTRIBUTE)
 % write_attribute_for_group(group_id_2d,dadefinition,ATTRIBUTE);
 
 % 
-group_id_2f = H5G.create(fileID, '/anatomical/subdivision of bony labyrinth/cochlea', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
+group_id_2f = H5G.create(fileID, '/anatomical/position', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
 ATTRIBUTE      = 'definition';
-didefinition= 'the spiral-shaped bony canal in the inner ear containing the hair cells that transduce sound. Its core component is the Organ of Corti, the sensory organ of hearing, which is distributed along the partition separating fluid chambers in the coiled tapered tube of the cochlea.'; 
+didefinition= 'A spatial quality inhering in a bearer by virtue of the bearers spatial location relative to other objects in the vicinity.';
 dadefinition= char(didefinition);
 write_attribute_for_group(group_id_2f,dadefinition,ATTRIBUTE);
 ATTRIBUTE      = 'imported_from';
-description=  'http://purl.obolibrary.org/obo/UBERON_0001844';
+description=  'http://purl.obolibrary.org/obo/PATO_0000140';
 dadefinition= char(description);
 write_attribute_for_group(group_id_2f,dadefinition,ATTRIBUTE);
-% group_id_2g = H5G.create(fileID, '/anatomical/subdivision of bony labyrinth/cochlea/positional polarity', 'H5P_DEFAULT', 'H5P_DEFAULT', 'H5P_DEFAULT');
-% ATTRIBUTE      = 'definition';
-% didefinition= 'A spatial quality inhering in a bearer by virtue of the bearers spatial location relative to other objects in the vicinity';
-% dadefinition= char(didefinition);
-% write_attribute_for_group(group_id_2g,dadefinition,ATTRIBUTE);
-% ATTRIBUTE      = 'imported_from';
-% description=  ' http://purl.obolibrary.org/obo/PATO_0001769';
-% dadefinition= char(description);
-% write_attribute_for_group(group_id_2g,dadefinition,ATTRIBUTE);
+
 % 
 % % create datasets
 cochlear_side=array_of_do_fits(1,j).ear;
@@ -100,16 +92,14 @@ end
 type = H5T.copy ('H5T_C_S1');
 space=H5S.create('H5S_SCALAR');
 name_def='cochlea';
-DATASETID=create_and_write_string_dataset(group_id_2f,space,type,name_def,cochlear_side);
-% % add attributes
-%attribute_general(DATASETID,researcher, dofexp, cellnumber, datasteward, datacurator,funder); % calls a function to add attributes
-% 
-ATTRIBUTE = 'definition';
-didefinition= 'cochlear part of bony labyrinth';
+DATASETID=create_and_write_string_dataset(group_id_1e2,space,type,name_def,cochlear_side);
+
+ATTRIBUTE      = 'definition';
+didefinition= 'the spiral-shaped bony canal in the inner ear containing the hair cells that transduce sound. Its core component is the Organ of Corti, the sensory organ of hearing, which is distributed along the partition separating fluid chambers in the coiled tapered tube of the cochlea.'; 
 dadefinition= char(didefinition);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 ATTRIBUTE      = 'imported_from';
-description=  'http://purl.obolibrary.org/obo/FMA_60201';
+description=  'http://purl.obolibrary.org/obo/UBERON_0001844';
 dadefinition= char(description);
 specific_string_attribute(DATASETID,ATTRIBUTE,dadefinition);
 ATTRIBUTE='allowed values';
