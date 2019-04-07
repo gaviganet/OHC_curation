@@ -24,7 +24,7 @@ To examine the data in MATLAB use BACKFLOW_script.m to create a Table and give i
             specific_string_attribute.m
             write_attribute_for_group.m
             attribute_general.m
-To run these scripts you will need to change the paths where the original MATLAB data is stored, the paths where the M files are stored and the path where the specimen files will be stored. More information about the script and functions can be found in the pdf file: ReadMe_translation_from_MATLAB_to_HDF5.
+To run these scripts you will need to change the paths where the original MATLAB data is stored, the paths where the M files are stored and the path where the specimen files will be stored. 
 
 (2)  MATLAB scripts that facilitate the translation of the data-set back to MATLAB from HDF5
 
