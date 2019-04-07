@@ -1,5 +1,6 @@
 # OHC_curationnse
-This project is licensed underr creative commons zero license (CC0).
+This project is licensed under creative commons zero license (CC0).
+
 The package contains four main items: (1) MATLAB scripts that facilitate the translation of a data collection from MATLAB to HDF5; (2) MATLAB scripts that facilitate the translation of the data collection back to MATLAB from HDF5; (3) MATLAB scripts used to analyze the data and (4) the ontological OWL file (OBI_based_Inner_Ear_Electrophysiology, OBI_IEE). 
 
 The data collection which was curated with extensive metadata is whole-cell voltage clamp recordings of isolated outer hair cells obtained from the domestic guinea pig.  The original unstructured data (four files) is saved as an array of structs in MATLAB (item 5) and can be found at repository (to add) the structured data collection is saved as a collection of digital specimens in HDF5 format with metadata (item 6) and can also be found at repository. Further details about the curation of this data can be found here http://ceur-ws.org/Vol-2285/.   
