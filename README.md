@@ -41,11 +41,11 @@ To run these scripts you will need to change the paths where the original MATLAB
 
 This script also plots the difference between that reported in the data, and that calculated now by the interested user in MATLAB. 
 
-4.2 To check whether you calculate the same non-linear and linear electrical parameters (e.g., voltage at peak capacitance, linear capacitance) as that reported. You will need to translate data from HDF5 to MATLAB (see item 2 above) and require
+4.2 To check whether you calculate the same non-linear and linear electrical parameters (e.g., voltage at peak capacitance, linear capacitance) as that reported. You will need to translate data from HDF5 to MATLAB (see item 2 above) and require.
 
      (4.2A) check_non_linear_electrical_properties.
      
-(5)  The ontology OWL file is named OBI_IEE.owl and can be viewed with Protege which can be downloaded here https://protege.stanford.edu/  
+(5)  The ontology OWL file is named OBI_IEE.owl and can be viewed with Protege which can be downloaded here https://protege.stanford.edu/.  
 
 
 
