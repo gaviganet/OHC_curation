@@ -4,7 +4,7 @@ The package contains three main items: (1) MATLAB scripts that facilitate the tr
 Download the HDF5 specimen files from the repository and peruse the data with HDFView which can be found here https://www.hdfgroup.org/downloads/hdfview/ after you open a free account https://www.hdfgroup.org/register/.  Note there are work arounds if using a MAC or Windows-based PC. 
 To examine the data in MATLAB use BACKFLOW_script.m to create a Table and give it a name like: 'array_of_hdf52mat_out.mat. 
 
-(1) MATLAB scripts that facilitate the translation of a data-set from MATLAB to HDF5. 
+(1) MATLAB scripts that facilitate the translation of a data from MATLAB to HDF5. 
 
       (1A) The main M script file is curationv7.m.  
       
@@ -26,7 +26,7 @@ To examine the data in MATLAB use BACKFLOW_script.m to create a Table and give i
             attribute_general.m
 To run these scripts you will need to change the paths where the original MATLAB data is stored, the paths where the M files are stored and the path where the specimen files will be stored. 
 
-(2)  MATLAB scripts that facilitate the translation of the data-set back to MATLAB from HDF5
+(2)  MATLAB scripts that facilitate the translation of the data back to MATLAB from HDF5
 
       (2A) The main M script file is HDF52MAT_script.m.  
       
