@@ -1,4 +1,4 @@
-# OHC_curationnse
+# OHC_curation
 This project is licensed under creative commons zero license (CC0).
 
 The package contains four main items: (1) MATLAB scripts that facilitate the translation of a data collection from MATLAB to HDF5; (2) MATLAB scripts that facilitate the translation of the data collection back to MATLAB from HDF5; (3) MATLAB scripts used to analyze the data and (4) the ontological OWL file (OBI_based_Inner_Ear_Electrophysiology, OBI_IEE). 
