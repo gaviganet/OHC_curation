@@ -11,7 +11,7 @@ The data collection which was curated with extensive metadata is whole-cell volt
 
       (2A) The main M script file is curationv7.m.  
       
-      (2B) This script calls 6 different functions that represent five arms of the curated data-set. These files are:
+      (2B) This script calls 6 different functions that represent six arms of the curated data-set. These files are:
             arm_organismv8a.m
             arm_anatomicalv6b2.m
             arm_devicev6a.m
